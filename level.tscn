@@ -1,3 +1,12 @@
-[gd_scene format=3 uid="uid://f268fnr3yxat"]
+[gd_scene load_steps=3 format=3 uid="uid://f268fnr3yxat"]
+
+[ext_resource type="Script" path="res://level.gd" id="1_4aq62"]
+[ext_resource type="PackedScene" uid="uid://c0ahu1mcjgx62" path="res://UI/pause_menu.tscn" id="1_mkdgr"]
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_4aq62")
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_mkdgr")]
+visible = false
+size_flags_horizontal = 4
+size_flags_vertical = 4

@@ -1,13 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://f268fnr3yxat"]
+[gd_scene load_steps=21 format=3 uid="uid://f268fnr3yxat"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_4aq62"]
 [ext_resource type="PackedScene" uid="uid://c0ahu1mcjgx62" path="res://UI/pause_menu.tscn" id="1_mkdgr"]
 [ext_resource type="Texture2D" uid="uid://dy3r5n4rgb2b4" path="res://Art/beach_tileset-export.png" id="2_nx2bk"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="4_cxmpg"]
 [ext_resource type="Texture2D" uid="uid://cs1dw5o6xx6k2" path="res://Art/M_02.png" id="4_hx63k"]
-[ext_resource type="PackedScene" uid="uid://ck5wdhgt5w0gr" path="res://ui/Transition.tscn" id="6_cndb8"]
+[ext_resource type="PackedScene" uid="uid://ck5wdhgt5w0gr" path="res://UI/Transition.tscn" id="6_cndb8"]
 [ext_resource type="Texture2D" uid="uid://dnw2q57rmnkuq" path="res://Art/sparkle_1.png" id="7_c0lyv"]
 [ext_resource type="Script" path="res://Level/ArtifactArea.gd" id="7_fgtii"]
+[ext_resource type="Texture2D" uid="uid://g13aus3bdm0j" path="res://Art/F_12.png" id="9_3mxte"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_op4bq"]
 texture = ExtResource("2_nx2bk")
@@ -822,6 +823,33 @@ size = Vector2(68, 637)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dsqbt"]
 
+[sub_resource type="Animation" id="Animation_foovg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_myp71"]
 resource_name = "sparkle"
 length = 3.2
@@ -851,38 +879,14 @@ tracks/1/keys = {
 "values": [Vector2(1, 1), Vector2(0.2, 0.2), Vector2(0.2, 0.2), Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_foovg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8w2sg"]
 _data = {
 "RESET": SubResource("Animation_foovg"),
 "sparkle": SubResource("Animation_myp71")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4efmq"]
+radius = 4.0
 
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
@@ -977,3 +981,20 @@ texture = ExtResource("7_c0lyv")
 libraries = {
 "": SubResource("AnimationLibrary_8w2sg")
 }
+
+[node name="Friend" type="CharacterBody2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-29, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Friend"]
+y_sort_enabled = true
+position = Vector2(0, 1.78)
+shape = SubResource("CircleShape2D_4efmq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Friend"]
+texture_filter = 5
+texture = ExtResource("9_3mxte")
+offset = Vector2(0, -5.34)
+hframes = 4
+vframes = 3

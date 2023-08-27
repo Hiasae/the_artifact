@@ -8,16 +8,20 @@ var frame_x : int
 
 const SPEED : float = 40
 @onready var interact_area = $InteractArea
+var frozen : bool = false
 
 
 func _process(_delta):
+	if frozen:
+		return
 	if Input.is_action_just_pressed("interact"):
 		if not interact_area.get_overlapping_areas().is_empty():
 			pass
 
 
 func _physics_process(delta):
-
+	if frozen:
+		return
 	var direction = Input.get_vector("left","right","forward", "backward")
 	if direction:
 		velocity = direction * SPEED
@@ -44,5 +48,9 @@ func update_sprite_animation(dir : Vector2, delta : float):
 	sprite_2d.frame_coords = Vector2i(frame_x,frame_y)
 	
 	
-	
+func freeze():
+	frozen = true
+
+func unfreeze():
+	frozen = false
 	

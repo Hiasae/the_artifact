@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnudse26wssuo"
-path="res://.godot/imported/tf_beach_tileB.png-18f75bada1d5c24d35cb0603e8a539bd.ctex"
+uid="uid://dy3r5n4rgb2b4"
+path="res://.godot/imported/beach_tileset-export.png-bb48965a07582cd557bd137d07832089.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/tf_beach_tileB.png"
-dest_files=["res://.godot/imported/tf_beach_tileB.png-18f75bada1d5c24d35cb0603e8a539bd.ctex"]
+source_file="res://Art/beach_tileset-export.png"
+dest_files=["res://.godot/imported/beach_tileset-export.png-bb48965a07582cd557bd137d07832089.ctex"]
 
 [params]
 

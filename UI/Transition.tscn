@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://ck5wdhgt5w0gr"]
+
+[ext_resource type="Script" path="res://UI/Transition.gd" id="1_35q8j"]
+[ext_resource type="Shader" path="res://UI/Transition.gdshader" id="1_70opy"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wacwk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tlfpu"]
+noise = SubResource("FastNoiseLite_wacwk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ivua1"]
+shader = ExtResource("1_70opy")
+shader_parameter/transition_time = 1.5
+shader_parameter/noi = SubResource("NoiseTexture2D_tlfpu")
+
+[sub_resource type="Animation" id="Animation_gg084"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/transition_time")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5]
+}
+
+[sub_resource type="Animation" id="Animation_p2kpv"]
+resource_name = "Transition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/transition_time")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.5, 0.0, 1.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdqnf"]
+_data = {
+"RESET": SubResource("Animation_gg084"),
+"Transition": SubResource("Animation_p2kpv")
+}
+
+[node name="TransitionLayer" type="CanvasLayer"]
+script = ExtResource("1_35q8j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ivua1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pdqnf")
+}

@@ -7,6 +7,14 @@ var frame_y : int
 var frame_x : int
 
 const SPEED : float = 40
+@onready var interact_area = $InteractArea
+
+
+func _process(_delta):
+	if Input.is_action_just_pressed("interact"):
+		if not interact_area.get_overlapping_areas().is_empty():
+			pass
+
 
 func _physics_process(delta):
 

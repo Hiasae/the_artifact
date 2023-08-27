@@ -1,4 +1,4 @@
-extends Control
+extends MarginContainer
 
 var current_health = 10
 var max_health = 10
@@ -15,20 +15,19 @@ var Anim2 = true
 var Anim3 = true
 
 
-
-
 signal textbox_closed
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_health($Player/Healthbar, State.current_health, State.max_health)
+	set_health($%Healthbar, State.current_health, State.max_health)
 	$Altface2.hide()
 	
 	display_text("Darkness beginns to creep in, you feel it approaching")
-	await Signal(self, "textbox_closed")
+	await textbox_closed   #Signal(self, "textbox_closed")
 	$Player.show()
+	start_sequence()
 
 func _input(event):
-	if (Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) and $Player/HBoxContainer/Textbox.visible:
+	if (Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) and $Player/PlayerPanel/HBoxContainer/Textbox.visible:
 		emit_signal("textbox_closed")
 
 
@@ -40,14 +39,15 @@ func set_health(progress_bar, health, max_health):
 
 
 func display_text(text):
-	$Player/HBoxContainer/Textbox/Text.show()
-	$Player/HBoxContainer/Textbox/Text.text = text
+	%Text.show()
+	%Text.text = text
 
 func display_textMonster(text):
-	$Panel.show()
-	$Panel/Label.text = text
+	$Background.show()
+	%TopLabel.text = text
+	
 func display_emotion(text):
-	$Player/Emotion.text = text
+	%Emotion.text = text
 
 func _on_flee_button_pressed():
 		if moin == 1:
@@ -78,20 +78,25 @@ func _on_fight_button_pressed():
 			turn_count = turn_count + 1
 	
 	
-func _physics_process(delta):
+#func _physics_process(delta):
+	
+	
+	
+	
+func start_sequence():
 	display_emotion("Neutral")
 	display_textMonster("A shadowy figure emerges from the darkness")
 	await get_tree().create_timer(10).timeout
 	display_textMonster("LET ME TOUCH YOU")
-	$Panel/Label.add_theme_color_override("font_color", Color("#FF0000"))
+	%TopLabel.add_theme_color_override("font_color", Color("#FF0000"))
 	await get_tree().create_timer(8).timeout
-	$Panel/Label.add_theme_color_override("font_color", Color("#FFFFFF"))
+	%TopLabel.add_theme_color_override("font_color", Color("#FFFFFF"))
 	display_textMonster("It looks at you, heaving its body forward")
 	if Anim1 == true:
 		$AnimationPlayer.play("SizeChange1")
 		Anim1 = false
 		await get_tree().create_timer(1).timeout
-		$Panel/Label.add_theme_color_override("font_color", Color("#FF0000"))
+		%TopLabel.add_theme_color_override("font_color", Color("#FF0000"))
 		display_textMonster("Why do you want to leave?")
 		display_emotion("Fear")
 		display_text("Friend: dont falter, we got this!")

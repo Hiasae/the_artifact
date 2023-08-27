@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 AudioManager="*res://Global/AudioManager.gd"
 SfxPlayer="*res://Global/SfxPlayer.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+State="*res://Global/State.gd"
 
 [display]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://f268fnr3yxat"]
+[gd_scene load_steps=22 format=3 uid="uid://f268fnr3yxat"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_4aq62"]
 [ext_resource type="PackedScene" uid="uid://c0ahu1mcjgx62" path="res://UI/pause_menu.tscn" id="1_mkdgr"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dnw2q57rmnkuq" path="res://Art/sparkle_1.png" id="7_c0lyv"]
 [ext_resource type="Script" path="res://Level/ArtifactArea.gd" id="7_fgtii"]
 [ext_resource type="Texture2D" uid="uid://g13aus3bdm0j" path="res://Art/F_12.png" id="9_3mxte"]
+[ext_resource type="PackedScene" uid="uid://pg7u1mv1yhwo" path="res://Battle/BattleSystem.tscn" id="10_ypmci"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_op4bq"]
 texture = ExtResource("2_nx2bk")
@@ -888,11 +889,13 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_4efmq"]
 radius = 4.0
 
-[node name="Level" type="Node2D"]
+[node name="Main" type="Node2D"]
+
+[node name="Level" type="Node2D" parent="." groups=["Level"]]
 y_sort_enabled = true
 script = ExtResource("1_4aq62")
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="Level"]
 z_index = -1
 y_sort_enabled = true
 texture_filter = 3
@@ -915,15 +918,15 @@ layer_2/y_sort_origin = 0
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(917495, 851968, 21, 983031, 851968, 22, 917496, 917504, 21, 983032, 917504, 22, 720886, 655360, 18, 786422, 655360, 19, 851958, 655360, 20, 720887, 720896, 18, 786423, 720896, 23, 851959, 720896, 24, 655352, 786432, 17, 720888, 786432, 18, 786424, 786432, 23, 851960, 786432, 24, 655353, 851968, 17, 720889, 851968, 18, 786425, 917504, 23, 851961, 917504, 24, 655354, 917504, 17, 720890, 917504, 18, 786426, 917504, 19, 851962, 917504, 20, 655347, 458752, 19, 720883, 458752, 20, 786419, 458752, 23, 851955, 458752, 22, 655348, 524288, 19, 720884, 524288, 20, 786420, 524288, 23, 851956, 524288, 22, 655349, 589824, 19, 720885, 589824, 20, 786421, 589824, 21, 851957, 589824, 22, 655359, 655360, 18, 720895, 655360, 19, 786431, 655360, 20, 851967, 655360, 21, 917503, 655360, 22, 589824, 720896, 18, 655360, 720896, 19, 720896, 720896, 20, 786432, 720896, 21, 851968, 720896, 22, 524289, 786432, 17, 589825, 786432, 18, 655361, 786432, 19, 720897, 786432, 20, 786433, 786432, 21, 851969, 786432, 22, 524290, 851968, 17, 589826, 851968, 18, 655362, 851968, 19, 720898, 851968, 20, 524291, 917504, 17, 589827, 917504, 18, 655363, 917504, 19, 720915, 655360, 18, 786451, 655360, 19, 851987, 655360, 20, 917523, 655360, 21, 983059, 655360, 22, 720916, 720896, 18, 786452, 720896, 19, 851988, 720896, 20, 917524, 720896, 21, 983060, 720896, 22, 655381, 786432, 17, 720917, 786432, 18, 786453, 786432, 19, 851989, 786432, 20, 917525, 786432, 21, 983061, 786432, 22, 655382, 851968, 17, 720918, 851968, 18, 786454, 851968, 19, 851990, 851968, 20, 655383, 917504, 17, 720919, 917504, 18, 786455, 917504, 19, 458777, 655360, 18, 524313, 655360, 19, 589849, 655360, 20, 655385, 655360, 21, 720921, 655360, 22, 458778, 720896, 18, 524314, 720896, 23, 589850, 720896, 24, 655386, 720896, 21, 720922, 720896, 22, 393243, 786432, 17, 458779, 786432, 18, 524315, 786432, 23, 589851, 786432, 24, 655387, 786432, 21, 720923, 786432, 22, 393244, 851968, 17, 458780, 851968, 18, 524316, 851968, 19, 589852, 851968, 20, 393245, 917504, 17, 458781, 917504, 18, 524317, 917504, 19, 786448, 458752, 13, 851984, 458752, 14, 917520, 458752, 15, 983056, 458752, 16, 786449, 524288, 13, 851985, 524288, 14, 917521, 524288, 15, 983057, 524288, 16, 786450, 589824, 13, 851986, 589824, 14, 917522, 589824, 15, 983058, 589824, 16, 524301, 458752, 13, 589837, 458752, 14, 655373, 458752, 15, 720909, 458752, 16, 524302, 524288, 13, 589838, 524288, 14, 655374, 524288, 15, 720910, 524288, 16, 524303, 589824, 13, 589839, 589824, 14, 655375, 589824, 15, 720911, 589824, 16, 589805, 458752, 13, 655341, 458752, 14, 720877, 458752, 15, 786413, 458752, 16, 589806, 524288, 13, 655342, 524288, 14, 720878, 524288, 15, 786414, 524288, 16, 589807, 589824, 13, 655343, 589824, 14, 720879, 589824, 15, 786415, 589824, 16, 720899, 458752, 13, 786435, 458752, 17, 851971, 458752, 18, 917507, 458752, 16, 720900, 524288, 13, 786436, 524288, 17, 851972, 524288, 18, 917508, 524288, 16, 720901, 589824, 13, 786437, 589824, 17, 851973, 589824, 18, 917509, 589824, 16, 720904, 655360, 18, 786440, 655360, 19, 851976, 655360, 20, 720905, 720896, 18, 786441, 720896, 19, 851977, 720896, 20, 655370, 786432, 17, 720906, 786432, 18, 786442, 786432, 19, 851978, 786432, 20, 655371, 851968, 17, 720907, 851968, 18, 786443, 851968, 19, 851979, 851968, 20, 655372, 917504, 17, 720908, 917504, 18, 786444, 917504, 19, 917513, 851968, 21, 983049, 851968, 22, 917514, 917504, 21, 983050, 917504, 22, 786457, 458752, 19, 851993, 458752, 20, 917529, 458752, 21, 983065, 458752, 22, 786458, 524288, 19, 851994, 524288, 20, 917530, 524288, 21, 983066, 524288, 22, 786459, 589824, 19, 851995, 589824, 20, 917531, 589824, 21, 983067, 589824, 22)
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="Level"]
 y_sort_enabled = true
 script = ExtResource("4_cxmpg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Player"]
 position = Vector2(0, 1.32)
 shape = SubResource("CapsuleShape2D_4s64a")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
+[node name="Sprite2D" type="Sprite2D" parent="Level/Player"]
 z_index = 1
 y_sort_enabled = true
 texture_filter = 5
@@ -933,15 +936,68 @@ offset = Vector2(0, -5.465)
 hframes = 4
 vframes = 3
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Level/Player"]
 zoom = Vector2(3, 3)
 
-[node name="InteractArea" type="Area2D" parent="Player"]
+[node name="InteractArea" type="Area2D" parent="Level/Player"]
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/InteractArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Player/InteractArea"]
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_gw8he")
+
+[node name="LevelBorder" type="StaticBody2D" parent="Level"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/LevelBorder"]
+position = Vector2(18.5, 320)
+shape = SubResource("RectangleShape2D_ktbqi")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/LevelBorder"]
+position = Vector2(-515, 25.5)
+shape = SubResource("RectangleShape2D_e1xpb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Level/LevelBorder"]
+position = Vector2(614, 25.5)
+shape = SubResource("RectangleShape2D_e1xpb")
+
+[node name="ArtifactArea" type="Area2D" parent="Level"]
+position = Vector2(26, 17)
+monitoring = false
+script = ExtResource("7_fgtii")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/ArtifactArea"]
+shape = SubResource("CircleShape2D_dsqbt")
+
+[node name="Sparkle" type="Sprite2D" parent="Level/ArtifactArea"]
+texture = ExtResource("7_c0lyv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level/ArtifactArea/Sparkle"]
+libraries = {
+"": SubResource("AnimationLibrary_8w2sg")
+}
+
+[node name="Friend" type="CharacterBody2D" parent="Level"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-29, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Friend"]
+y_sort_enabled = true
+position = Vector2(0, 1.78)
+shape = SubResource("CircleShape2D_4efmq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Friend"]
+texture_filter = 5
+texture = ExtResource("9_3mxte")
+offset = Vector2(0, -5.34)
+hframes = 4
+vframes = 3
+
+[node name="BattleLayer" type="CanvasLayer" parent="."]
+
+[node name="BattleSystem" parent="BattleLayer" groups=["Battlesystem"] instance=ExtResource("10_ypmci")]
+process_mode = 4
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -950,51 +1006,5 @@ visible = false
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="LevelBorder" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelBorder"]
-position = Vector2(18.5, 320)
-shape = SubResource("RectangleShape2D_ktbqi")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="LevelBorder"]
-position = Vector2(-515, 25.5)
-shape = SubResource("RectangleShape2D_e1xpb")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="LevelBorder"]
-position = Vector2(614, 25.5)
-shape = SubResource("RectangleShape2D_e1xpb")
-
-[node name="TransitionLayer" parent="." instance=ExtResource("6_cndb8")]
-
-[node name="ArtifactArea" type="Area2D" parent="."]
-position = Vector2(181, 0)
-monitoring = false
-script = ExtResource("7_fgtii")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ArtifactArea"]
-shape = SubResource("CircleShape2D_dsqbt")
-
-[node name="Sparkle" type="Sprite2D" parent="ArtifactArea"]
-texture = ExtResource("7_c0lyv")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ArtifactArea/Sparkle"]
-libraries = {
-"": SubResource("AnimationLibrary_8w2sg")
-}
-
-[node name="Friend" type="CharacterBody2D" parent="."]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(-29, 10)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Friend"]
-y_sort_enabled = true
-position = Vector2(0, 1.78)
-shape = SubResource("CircleShape2D_4efmq")
-
-[node name="Sprite2D" type="Sprite2D" parent="Friend"]
-texture_filter = 5
-texture = ExtResource("9_3mxte")
-offset = Vector2(0, -5.34)
-hframes = 4
-vframes = 3
+[node name="TransitionLayer" parent="." groups=["Transition"] instance=ExtResource("6_cndb8")]
+layer = 3

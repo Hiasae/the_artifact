@@ -44,8 +44,8 @@ func _on_check_button_button_up():
 func _on_volume_slider_drag_ended(_value_changed):
 	AudioServer.set_bus_volume_db(0,linear_to_db(volume_slider.value))
 
-func _on_music_slider_drag_ended(value_changed):
+func _on_music_slider_drag_ended(_value_changed):
 	AudioServer.set_bus_volume_db(2,linear_to_db(music_slider.value))
 
-func _on_sfx_slider_drag_ended(value_changed):
+func _on_sfx_slider_drag_ended(_value_changed):
 	AudioServer.set_bus_volume_db(1,linear_to_db(sfx_slider.value))

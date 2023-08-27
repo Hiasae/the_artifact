@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Control
 
 var current_health = 10
 var max_health = 10
@@ -17,14 +17,24 @@ var Anim3 = true
 
 signal textbox_closed
 # Called when the node enters the scene tree for the first time.
-func _ready():
+
+func start():
 	set_health($%Healthbar, State.current_health, State.max_health)
 	$Altface2.hide()
 	
 	display_text("Darkness beginns to creep in, you feel it approaching")
 	await textbox_closed   #Signal(self, "textbox_closed")
 	$Player.show()
-	start_sequence()
+
+#func _ready():
+#	set_health($%Healthbar, State.current_health, State.max_health)
+#	$Altface2.hide()
+#
+#	display_text("Darkness beginns to creep in, you feel it approaching")
+#	await textbox_closed   #Signal(self, "textbox_closed")
+#	$Player.show()
+	
+	#start_sequence()
 
 func _input(event):
 	if (Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) and $Player/PlayerPanel/HBoxContainer/Textbox.visible:
@@ -50,19 +60,19 @@ func display_emotion(text):
 	%Emotion.text = text
 
 func _on_flee_button_pressed():
-		if moin == 1:
-			display_text("Friend: You cannot leave me alone like this!")
-			moin = 2
+	if moin == 1:
+		display_text("Friend: You cannot leave me alone like this!")
+		moin = 2
+		turn_count = turn_count + 1
+	else:
+		if moin == 2:
+			display_text("Friend: You wont leave me like this")
+			moin = 3
 			turn_count = turn_count + 1
 		else:
-			if moin == 2:
-				display_text("Friend: You wont leave me like this")
-				moin = 3
+			if moin == 3:
+				display_text("The guilt of abandoning your friend binds you to this place, you will not leave")
 				turn_count = turn_count + 1
-			else:
-				if moin == 3:
-					display_text("The guilt of abandoning your friend binds you to this place, you will not leave")
-					turn_count = turn_count + 1
 
 
 
@@ -100,11 +110,11 @@ func start_sequence():
 		display_textMonster("Why do you want to leave?")
 		display_emotion("Fear")
 		display_text("Friend: dont falter, we got this!")
-		await get_tree().create_timer(2)
+		await get_tree().create_timer(2).timeout
 		display_emotion("Neutral")
-		await get_tree().create_timer(4)
+		await get_tree().create_timer(4).timeout
 		display_textMonster("Come HERE!")
-		await get_tree().create_timer(4)
+		await get_tree().create_timer(4).timeout
 		$Altface2.show()
 
 

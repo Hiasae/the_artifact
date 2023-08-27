@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ck5wdhgt5w0gr"]
+[gd_scene load_steps=10 format=3 uid="uid://ck5wdhgt5w0gr"]
 
 [ext_resource type="Script" path="res://UI/Transition.gd" id="1_35q8j"]
 [ext_resource type="Shader" path="res://UI/Transition.gdshader" id="1_70opy"]
@@ -12,6 +12,36 @@ noise = SubResource("FastNoiseLite_wacwk")
 shader = ExtResource("1_70opy")
 shader_parameter/transition_time = 1.5
 shader_parameter/noi = SubResource("NoiseTexture2D_tlfpu")
+
+[sub_resource type="Animation" id="Animation_p2kpv"]
+resource_name = "Fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/transition_time")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pi535"]
+resource_name = "Fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/transition_time")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 2.0]
+}
 
 [sub_resource type="Animation" id="Animation_gg084"]
 length = 0.001
@@ -28,28 +58,15 @@ tracks/0/keys = {
 "values": [1.5]
 }
 
-[sub_resource type="Animation" id="Animation_p2kpv"]
-resource_name = "Transition"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader_parameter/transition_time")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [2.0, 0.0, 2.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pdqnf"]
 _data = {
-"RESET": SubResource("Animation_gg084"),
-"Transition": SubResource("Animation_p2kpv")
+"Fade_in": SubResource("Animation_p2kpv"),
+"Fade_out": SubResource("Animation_pi535"),
+"RESET": SubResource("Animation_gg084")
 }
 
-[node name="TransitionLayer" type="CanvasLayer"]
+[node name="TransitionLayer2" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_35q8j")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -66,3 +83,5 @@ color = Color(0, 0, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_pdqnf")
 }
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

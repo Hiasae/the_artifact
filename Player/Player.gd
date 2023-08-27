@@ -15,8 +15,8 @@ func _process(_delta):
 	if frozen:
 		return
 	if Input.is_action_just_pressed("interact"):
-		if not interact_area.get_overlapping_areas().is_empty():
-			pass
+		if not interact_area.get_overlapping_areas().is_empty() and interact_area.get_overlapping_areas()[0] is Interactable:
+			interact_area.get_overlapping_areas()[0].interact()
 
 
 func _physics_process(delta):

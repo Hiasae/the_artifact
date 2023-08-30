@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://buuxibw1cgnla"]
+
+[ext_resource type="Texture2D" uid="uid://g13aus3bdm0j" path="res://Art/F_12.png" id="1_k1mse"]
+[ext_resource type="Script" path="res://Level/friend.gd" id="1_louj4"]
+[ext_resource type="Texture2D" uid="uid://cq32bv2uwva2k" path="res://Art/emotes.png" id="3_i2dio"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4efmq"]
+radius = 4.0
+
+[node name="Friend1" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_louj4")
+character_sprite = ExtResource("1_k1mse")
+frame_coord = Vector2i(1, 0)
+has_collision = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 1.78)
+shape = SubResource("CircleShape2D_4efmq")
+
+[node name="Emote" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 3
+texture_repeat = 1
+position = Vector2(0, -16)
+texture = ExtResource("3_i2dio")
+hframes = 2
+vframes = 2
+
+[node name="Character" type="Sprite2D" parent="."]
+texture_filter = 5
+texture = ExtResource("1_k1mse")
+offset = Vector2(0, -5.34)
+hframes = 4
+vframes = 3
+frame = 1

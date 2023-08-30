@@ -1,5 +1,4 @@
 extends Area2D
-class_name Interactable
 
 signal has_interacted
 var interact_once : bool = true

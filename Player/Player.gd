@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @onready var sprite_2d : Sprite2D = $Sprite2D
 var anim_update : float = 0.2
@@ -6,16 +7,23 @@ var anim_time : float = 0
 var frame_y : int
 var frame_x : int
 
+static var self_instance 
+
 const SPEED : float = 40
 @onready var interact_area = $InteractArea
 var frozen : bool = false
 
-
+func _ready():
+	self_instance = self
+	frozen = true
+	hide()
+	
+	
 func _process(_delta):
 	if frozen:
 		return
 	if Input.is_action_just_pressed("interact"):
-		if not interact_area.get_overlapping_areas().is_empty() and interact_area.get_overlapping_areas()[0] is Interactable:
+		if not interact_area.get_overlapping_areas().is_empty() and interact_area.get_overlapping_areas()[0].has_method("interact"):
 			interact_area.get_overlapping_areas()[0].interact()
 
 

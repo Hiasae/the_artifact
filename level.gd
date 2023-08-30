@@ -1,9 +1,13 @@
 extends Node2D
 
+@onready var player = Player.self_instance
+@onready var map_piece = $"Map piece"
 
-# Called when the node enters the scene tree for the first time.
+
+
 func _ready():
 	Global.setup()
+	get_tree().get_nodes_in_group("Level_exits")[0].level_exited.connect(change_map_piece)
 	pass
 	#var dia = load("res://Dialogue/Dialogue1.dialogue")
 	#DialogueManager.show_example_dialogue_balloon(dia,"start")
@@ -12,3 +16,22 @@ func _ready():
 func darken_level():
 	var tw = get_tree().create_tween()
 	tw.tween_property(self,"modulate",Color(0.4,0.4,0.4,1.0),2.0)
+
+
+func change_map_piece(to : String, player_spawn_name : String):
+	map_piece.get_child(0).queue_free()
+	var new_piece = load(to).instantiate()
+	map_piece.call_deferred("add_child",new_piece)
+	await get_tree().process_frame
+	get_tree().get_nodes_in_group("Level_exits")[0].level_exited.connect(change_map_piece)
+	for i in get_tree().get_nodes_in_group("PlayerSpawns"):
+		if player_spawn_name == i.name:
+			player.global_position = i.global_position
+			return
+
+
+func setup_player():
+	player.global_position = get_tree().get_nodes_in_group("PlayerSpawns")[0].global_position
+	player.show()
+	player.unfreeze()
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://f268fnr3yxat"]
+[gd_scene load_steps=23 format=3 uid="uid://f268fnr3yxat"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_4aq62"]
 [ext_resource type="PackedScene" uid="uid://c0ahu1mcjgx62" path="res://UI/pause_menu.tscn" id="1_mkdgr"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Level/ArtifactArea.gd" id="7_fgtii"]
 [ext_resource type="Texture2D" uid="uid://g13aus3bdm0j" path="res://Art/F_12.png" id="9_3mxte"]
 [ext_resource type="PackedScene" uid="uid://pg7u1mv1yhwo" path="res://Battle/BattleSystem.tscn" id="10_ypmci"]
+[ext_resource type="AudioStream" uid="uid://babgfmimxcm76" path="res://Level/Horror_2.1.ogg" id="11_bvipe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_op4bq"]
 texture = ExtResource("2_nx2bk")
@@ -1008,3 +1009,6 @@ size_flags_vertical = 4
 
 [node name="TransitionLayer" parent="." groups=["Transition"] instance=ExtResource("6_cndb8")]
 layer = 3
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_bvipe")

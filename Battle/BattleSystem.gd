@@ -27,7 +27,7 @@ func start():
 	$Player.show()
 
 func _ready():
-	$"../../AudioStreamPlayer2D".play()
+	$AudioStreamPlayer2.play()
 	display_emotion("Neutral")
 	set_health($%Healthbar, State.current_health, State.max_health)
 	$Altface2.hide()
@@ -95,7 +95,7 @@ func _on_fight_button_pressed():
 	
 	
 func start_sequence():
-	$"../../AudioStreamPlayer2D".stop()
+	$AudioStreamPlayer2.stop()
 	$AudioStreamPlayer.play()
 	display_emotion("Neutral")
 	display_text("You: What is that....thing?")

@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://de8w338dxtibu"]
+[gd_scene load_steps=22 format=3 uid="uid://de8w338dxtibu"]
 
 [ext_resource type="PackedScene" uid="uid://bfrykwthyj2a1" path="res://Level/Artifact_map/artifact_area.tscn" id="2_xdwbe"]
 [ext_resource type="PackedScene" uid="uid://i4xmi2wkhfha" path="res://Level/sunrays_light.tscn" id="3_2cjxh"]
 [ext_resource type="PackedScene" uid="uid://hmo5lwpin6es" path="res://Level/exit_area.tscn" id="3_wsuiv"]
 [ext_resource type="Texture2D" uid="uid://81gaq7hjb7fy" path="res://Art/crab.png" id="4_dhxgg"]
 [ext_resource type="Script" path="res://Level/Artifact_map/CrabDetection.gd" id="4_gjn6v"]
+[ext_resource type="PackedScene" uid="uid://buuxibw1cgnla" path="res://Level/friend.tscn" id="6_7jngo"]
+[ext_resource type="Texture2D" uid="uid://dxj03e70ve4rf" path="res://Art/M_08.png" id="7_l1fkm"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1s3cu"]
 load_path = "res://.godot/imported/beach_tileset-export.png-bb48965a07582cd557bd137d07832089.ctex"
@@ -1050,6 +1052,105 @@ _data = {
 "crab_disappear": SubResource("Animation_f1g5t")
 }
 
+[sub_resource type="Animation" id="Animation_5hrj1"]
+resource_name = "flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0426669, 0.2),
+"transitions": PackedFloat32Array(-2, -0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_680ki"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kqc7s"]
+_data = {
+"RESET": SubResource("Animation_680ki"),
+"flash": SubResource("Animation_5hrj1")
+}
+
+[sub_resource type="Animation" id="Animation_ichcc"]
+resource_name = "friend_meet"
+length = 4.8
+step = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Friend1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 179), Vector2(0, 17)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Friend1:frame_coord")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3, 3.6, 3.9, 4.2, 4.5, 4.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 0), Vector2i(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eyyf8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Friend1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 179)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Friend1:frame_coord")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(2, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_07v14"]
+_data = {
+"RESET": SubResource("Animation_eyyf8"),
+"friend_meet": SubResource("Animation_ichcc")
+}
+
 [node name="TileMap" type="TileMap"]
 z_index = -1
 y_sort_enabled = true
@@ -1127,5 +1228,32 @@ position = Vector2(-14, -6)
 rotation = -1.5708
 texture = ExtResource("4_dhxgg")
 hframes = 2
+
+[node name="FlashingLights" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="FlashingLights"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FlashingLights"]
+libraries = {
+"": SubResource("AnimationLibrary_kqc7s")
+}
+
+[node name="Friend1" parent="." instance=ExtResource("6_7jngo")]
+position = Vector2(0, 179)
+character_sprite = ExtResource("7_l1fkm")
+frame_coord = Vector2i(2, 0)
+emote_id = -1
+has_collision = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_07v14")
+}
 
 [connection signal="body_entered" from="CrabDetection" to="CrabDetection" method="_on_body_entered"]

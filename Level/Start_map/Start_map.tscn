@@ -1401,5 +1401,6 @@ text = "The five of us went to a secluded beach for the weekend. Clean sand, cry
 scroll_active = false
 
 [node name="Sunrays" parent="." instance=ExtResource("10_2vuup")]
+amount = 32
 
 [connection signal="intro_played" from="AnimationPlayer" to="Friend3/AnimationPlayer" method="play" binds= ["kicking"]]

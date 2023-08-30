@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://f268fnr3yxat"]
+[gd_scene load_steps=13 format=3 uid="uid://f268fnr3yxat"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_4aq62"]
 [ext_resource type="PackedScene" uid="uid://c0ahu1mcjgx62" path="res://UI/pause_menu.tscn" id="1_mkdgr"]
 [ext_resource type="PackedScene" uid="uid://bq2id4sxb3sma" path="res://Level/Start_map/Start_map.tscn" id="3_21hal"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="4_cxmpg"]
 [ext_resource type="Texture2D" uid="uid://4nvscrbm1kmy" path="res://Art/protag.png" id="5_mrfuf"]
+[ext_resource type="Texture2D" uid="uid://cq32bv2uwva2k" path="res://Art/emotes.png" id="5_w70ow"]
 [ext_resource type="PackedScene" uid="uid://ck5wdhgt5w0gr" path="res://UI/Transition.tscn" id="6_cndb8"]
 [ext_resource type="PackedScene" uid="uid://pg7u1mv1yhwo" path="res://Battle/BattleSystem.tscn" id="10_ypmci"]
 
@@ -74,6 +75,11 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Player/InteractArea"]
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_gw8he")
+
+[node name="Emote" type="Sprite2D" parent="Level/Player"]
+texture = ExtResource("5_w70ow")
+hframes = 2
+vframes = 2
 
 [node name="BattleLayer" type="CanvasLayer" parent="."]
 

@@ -1,0 +1,97 @@
+[gd_scene load_steps=12 format=3 uid="uid://brss6k3fa4cgs"]
+
+[ext_resource type="Script" path="res://Logic3dLevel.gd" id="1_amhtl"]
+[ext_resource type="PackedScene" uid="uid://dhi4dy4whoec2" path="res://Level/beach.glb" id="2_cav3p"]
+[ext_resource type="Shader" uid="uid://dtc8sxelgrjg5" path="res://water.tres" id="3_ieq4h"]
+[ext_resource type="Texture2D" uid="uid://dnadalelko0ik" path="res://Art/blueface1.png" id="4_tkupu"]
+[ext_resource type="Texture2D" uid="uid://bto3nmpe6j7u" path="res://Art/tree.png" id="5_y3cxu"]
+[ext_resource type="AudioStream" uid="uid://babgfmimxcm76" path="res://Level/Horror_2.1.ogg" id="6_twpu4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_70mjj"]
+sky_top_color = Color(0.164706, 0.203922, 0.258824, 1)
+sky_horizon_color = Color(0.541176, 0.55098, 0.564706, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.541176, 0.55098, 0.564706, 1)
+
+[sub_resource type="Sky" id="Sky_2km48"]
+sky_material = SubResource("ProceduralSkyMaterial_70mjj")
+
+[sub_resource type="Environment" id="Environment_4tjr3"]
+background_mode = 2
+sky = SubResource("Sky_2km48")
+tonemap_mode = 2
+ssao_radius = 13.98
+ssao_horizon = 1.0
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_bounce_feedback = 0.42
+sdfgi_min_cell_size = 0.0015625
+sdfgi_energy = 6.055
+fog_enabled = true
+fog_light_color = Color(0.466667, 0.478431, 0.513726, 1)
+fog_density = 0.7474
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v5id1"]
+render_priority = 0
+shader = ExtResource("3_ieq4h")
+shader_parameter/ColorParameter = Color(0.027451, 0.039216, 0.298039, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7s23f"]
+material = SubResource("ShaderMaterial_v5id1")
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_amhtl")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4tjr3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="beach" parent="." instance=ExtResource("2_cav3p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3878, 0, -0.511134)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.0416141, 0, 0.999134, 0, 1, 0, -0.999134, 0, -0.0416141, 1.23288, 1.20541, 0.362147)
+fov = 32.7601
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.896874, 0.887326, -0.701978)
+mesh = SubResource("PlaneMesh_7s23f")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10068, 0.887326, -0.701978)
+mesh = SubResource("PlaneMesh_7s23f")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89276, 0.88583, -0.701978)
+mesh = SubResource("PlaneMesh_7s23f")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.88808, 0.882871, -0.701978)
+mesh = SubResource("PlaneMesh_7s23f")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.0762666, 0, -0.997087, 0, 1, 0, 0.997087, 0, 0.0762666, 0.945992, 1.07667, 0.396313)
+pixel_size = 0.002
+texture = ExtResource("4_tkupu")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(0.969932, 0, -0.243378, 0.00705452, 0.99958, 0.0281143, 0.243276, -0.0289859, 0.969524, 0.119565, 1.28355, 2.3031)
+texture = ExtResource("5_y3cxu")
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform3D(0.969932, 0, -0.243378, 0.00705452, 0.99958, 0.0281143, 0.243276, -0.0289859, 0.969524, -0.179695, 1.28355, 2.3031)
+texture = ExtResource("5_y3cxu")
+
+[node name="Sprite3D4" type="Sprite3D" parent="."]
+transform = Transform3D(0.969932, 0, -0.243378, 0.00705452, 0.99958, 0.0281143, 0.243276, -0.0289859, 0.969524, -1.18354, 1.28355, 2.3031)
+texture = ExtResource("5_y3cxu")
+
+[node name="Sprite3D5" type="Sprite3D" parent="."]
+transform = Transform3D(0.969932, 0, -0.243378, 0.00705452, 0.99958, 0.0281143, 0.243276, -0.0289859, 0.969524, -2.27558, 1.28355, 2.3031)
+texture = ExtResource("5_y3cxu")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_twpu4")

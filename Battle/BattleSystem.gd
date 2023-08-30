@@ -23,18 +23,19 @@ func start():
 	$Altface2.hide()
 	
 	display_text("Darkness beginns to creep in, you feel it approaching")
-	await textbox_closed   #Signal(self, "textbox_closed")
+	await Signal(self, "textbox_closed")
 	$Player.show()
 
-#func _ready():
-#	set_health($%Healthbar, State.current_health, State.max_health)
-#	$Altface2.hide()
-#
-#	display_text("Darkness beginns to creep in, you feel it approaching")
-#	await textbox_closed   #Signal(self, "textbox_closed")
-#	$Player.show()
-	
-	#start_sequence()
+func _ready():
+	$"../../AudioStreamPlayer2D".play()
+	display_emotion("Neutral")
+	set_health($%Healthbar, State.current_health, State.max_health)
+	$Altface2.hide()
+
+	display_text("Darkness beginns to creep in, you feel it approaching")
+	await textbox_closed   #Signal(self, "textbox_closed")
+	$Player.show()
+	start_sequence()
 
 func _input(_event):
 	if (Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) and $Player/PlayerPanel/HBoxContainer/Textbox.visible:
@@ -94,29 +95,37 @@ func _on_fight_button_pressed():
 	
 	
 func start_sequence():
+	$"../../AudioStreamPlayer2D".stop()
+	$AudioStreamPlayer.play()
 	display_emotion("Neutral")
-	display_textMonster("A shadowy figure emerges from the darkness")
-	await get_tree().create_timer(10).timeout
-	display_textMonster("LET ME TOUCH YOU")
-	%TopLabel.add_theme_color_override("font_color", Color("#FF0000"))
+	display_text("You: What is that....thing?")
+	display_textMonster("........")
 	await get_tree().create_timer(8).timeout
-	%TopLabel.add_theme_color_override("font_color", Color("#FFFFFF"))
-	display_textMonster("It looks at you, heaving its body forward")
-	if Anim1 == true:
-		$AnimationPlayer.play("SizeChange1")
-		Anim1 = false
-		await get_tree().create_timer(1).timeout
-		%TopLabel.add_theme_color_override("font_color", Color("#FF0000"))
-		display_textMonster("Why do you want to leave?")
-		display_emotion("Fear")
-		display_text("Friend: dont falter, we got this!")
-		await get_tree().create_timer(2).timeout
-		display_emotion("Neutral")
-		await get_tree().create_timer(4).timeout
-		display_textMonster("Come HERE!")
-		await get_tree().create_timer(4).timeout
-		$Altface2.show()
-
+	display_text("oh no")
+	%TopLabel.set("theme_override_colors/font_color", Color("#FF0000"))
+	display_textMonster("AHHHHHHHHHH")
+	await get_tree().create_timer(4)
+	display_text("You: its a Monster!")
+	display_textMonster(" @%#^&$@^&7")
+	await get_tree().create_timer(5).timeout
+	display_text("what?")
+	await get_tree().create_timer(10).timeout
+	display_textMonster("(&(*&^*((*--love--*(^(&*(-What-^&*&%*&%^%&^$-doing")
+	$AnimationPlayer.play("RESET")
+	await get_tree().create_timer(4).timeout
+	display_text("You:(it can talk! what is this monstrosity ! it ....loves to do this? to kill me?!)")
+	await get_tree().create_timer(7).timeout
+	display_textMonster("no-((^&*58-Love --*UH&*Y- to you*(&*&(")
+	await get_tree().create_timer(2).timeout
+	display_text("(what madness is this creature spewing... i better do something quick or ill die here!)")
+	display_emotion("Fear")
+	$AudioStreamPlayer2.play()
+	await get_tree().create_timer(13).timeout
+	display_textMonster("COME HERE")
+	await get_tree().create_timer(4).timeout
+	$Altface2.show()
+	await get_tree().create_timer(1).timeout
+	get_tree().change_scene_to_file("res://3dlevel.tscn")
 
 
 

@@ -12,7 +12,7 @@ func _ready():
 	anim_player.play("blink")
 	set_visible(active)
 
-func activate(val : bool)->void:
+func activate(val : bool = true)->void:
 	active = val
 	set_visible(active)
 

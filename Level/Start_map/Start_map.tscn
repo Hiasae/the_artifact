@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bq2id4sxb3sma"]
+[gd_scene load_steps=20 format=3 uid="uid://bq2id4sxb3sma"]
 
 [ext_resource type="Texture2D" uid="uid://dy3r5n4rgb2b4" path="res://Art/beach_tileset-export.png" id="1_w8f20"]
 [ext_resource type="PackedScene" uid="uid://buuxibw1cgnla" path="res://Level/friend.tscn" id="2_gtrn8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b0ulhfw2ldjvl" path="res://Art/ball.png" id="5_x4edy"]
 [ext_resource type="Script" path="res://Level/Start_map/test.gd" id="7_3ta7e"]
 [ext_resource type="Texture2D" uid="uid://4nvscrbm1kmy" path="res://Art/protag.png" id="7_gp5ht"]
+[ext_resource type="PackedScene" uid="uid://cc4k3scbieswe" path="res://Level/sunrays.tscn" id="10_2vuup"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_op4bq"]
 texture = ExtResource("1_w8f20")
@@ -817,6 +818,44 @@ texture = ExtResource("1_w8f20")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_op4bq")
 
+[sub_resource type="Animation" id="Animation_pyg23"]
+resource_name = "kicking"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ball:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1.4),
+"transitions": PackedFloat32Array(-2, 1, -2, 1),
+"update": 0,
+"values": [Vector2(-31, 0), Vector2(-7, 0), Vector2(-7, 0), Vector2(-31, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s7c4q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ball:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-31, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cdobh"]
+_data = {
+"RESET": SubResource("Animation_s7c4q"),
+"kicking": SubResource("Animation_pyg23")
+}
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a0ji8"]
 radius = 6.0
 height = 28.0
@@ -1272,18 +1311,21 @@ metadata/_edit_vertical_guides_ = [-181.0, 183.0]
 position = Vector2(-201, 19)
 frame_coord = Vector2i(0, 0)
 emote_id = -1
+has_collision = true
 
 [node name="Friend2" parent="." instance=ExtResource("2_gtrn8")]
 position = Vector2(-206, 33)
 character_sprite = ExtResource("3_3ea0h")
 frame_coord = Vector2i(1, 1)
 emote_id = -1
+has_collision = true
 
 [node name="Friend3" parent="." instance=ExtResource("2_gtrn8")]
 position = Vector2(-188, 28)
 character_sprite = ExtResource("3_f14b6")
 frame_coord = Vector2i(1, 1)
 emote_id = -1
+has_collision = true
 
 [node name="ball" type="Sprite2D" parent="Friend3"]
 visible = false
@@ -1292,14 +1334,21 @@ position = Vector2(-7, 0)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_x4edy")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Friend3"]
+libraries = {
+"": SubResource("AnimationLibrary_cdobh")
+}
+
 [node name="Friend4" parent="." instance=ExtResource("2_gtrn8")]
 position = Vector2(-187, 13)
 character_sprite = ExtResource("4_nh1mc")
 frame_coord = Vector2i(1, 1)
 emote_id = -1
+has_collision = true
 
 [node name="Friend5" parent="." instance=ExtResource("2_gtrn8")]
 position = Vector2(-217, 45)
+collision_layer = 0
 character_sprite = ExtResource("7_gp5ht")
 frame_coord = Vector2i(1, 1)
 emote_id = -1
@@ -1350,3 +1399,7 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 text = "The five of us went to a secluded beach for the weekend. Clean sand, crystal clear water and the warmth of the sun awaits us."
 scroll_active = false
+
+[node name="Sunrays" parent="." instance=ExtResource("10_2vuup")]
+
+[connection signal="intro_played" from="AnimationPlayer" to="Friend3/AnimationPlayer" method="play" binds= ["kicking"]]

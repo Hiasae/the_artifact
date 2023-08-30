@@ -36,16 +36,16 @@ func start():
 	
 	#start_sequence()
 
-func _input(event):
+func _input(_event):
 	if (Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) and $Player/PlayerPanel/HBoxContainer/Textbox.visible:
 		emit_signal("textbox_closed")
 
 
 
-func set_health(progress_bar, health, max_health):
+func set_health(progress_bar, health, _max_health):
 	progress_bar.value = health
-	progress_bar.max_value = max_health
-	progress_bar.get_node("Health").text = "HP: %d/%d" % [health, max_health]
+	progress_bar.max_value = _max_health
+	progress_bar.get_node("Health").text = "HP: %d/%d" % [health, _max_health]
 
 
 func display_text(text):

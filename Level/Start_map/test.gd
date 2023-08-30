@@ -3,7 +3,7 @@ extends AnimationPlayer
 signal intro_played
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("forward"):
 		intro_played.connect(Global.level.setup_player)
 		play("Intro")

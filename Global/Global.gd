@@ -13,7 +13,8 @@ func do_event(val : String):
 	match val:
 		"find_artifact":
 			print("found_artifact")
-			start_battle("first")
+			get_tree().get_nodes_in_group("Level_exits")[0].activate()
+			#start_battle("first")
 
 
 func start_battle(id : String):

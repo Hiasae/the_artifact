@@ -1,11 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://pg7u1mv1yhwo"]
 
 [ext_resource type="Script" path="res://Battle/BattleSystem.gd" id="1_7ufeq"]
+[ext_resource type="Texture2D" uid="uid://dxoccwtexinns" path="res://Art/BEACHBG5.png" id="2_gje1a"]
 [ext_resource type="Texture2D" uid="uid://dnadalelko0ik" path="res://Art/blueface1.png" id="2_tfhtf"]
 [ext_resource type="Texture2D" uid="uid://bbrnbm4nnq2yw" path="res://Art/altface2.png" id="3_bf53c"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqxbi"]
-bg_color = Color(0.152941, 0.152941, 0.152941, 0.843137)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yx05h"]
 bg_color = Color(0, 0, 0, 0.490196)
@@ -81,7 +79,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_7ufeq")
 
-[node name="Background" type="Panel" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,7 +89,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.82
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_nqxbi")
+texture = ExtResource("2_gje1a")
 
 [node name="TopLabel" type="Label" parent="Background"]
 unique_name_in_owner = true

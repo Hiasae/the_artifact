@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://de8w338dxtibu"]
+[gd_scene load_steps=14 format=3 uid="uid://de8w338dxtibu"]
 
 [ext_resource type="PackedScene" uid="uid://bfrykwthyj2a1" path="res://Level/Artifact_map/artifact_area.tscn" id="2_xdwbe"]
+[ext_resource type="PackedScene" uid="uid://i4xmi2wkhfha" path="res://Level/sunrays_light.tscn" id="3_2cjxh"]
 [ext_resource type="PackedScene" uid="uid://hmo5lwpin6es" path="res://Level/exit_area.tscn" id="3_wsuiv"]
+[ext_resource type="Texture2D" uid="uid://81gaq7hjb7fy" path="res://Art/crab.png" id="4_dhxgg"]
+[ext_resource type="Script" path="res://Level/Artifact_map/CrabDetection.gd" id="4_gjn6v"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1s3cu"]
 load_path = "res://.godot/imported/beach_tileset-export.png-bb48965a07582cd557bd137d07832089.ctex"
@@ -815,6 +818,238 @@ sources/0 = SubResource("TileSetAtlasSource_al100")
 radius = 6.0
 height = 28.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_i2sog"]
+radius = 70.0
+
+[sub_resource type="Animation" id="Animation_f1g5t"]
+resource_name = "crab_disappear"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Crab:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(6, -13), Vector2(59, -13)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crab2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(-13, 14), Vector2(54, 14)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Crab3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(-14, -6), Vector2(-14, -58)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Crab:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Crab2:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Crab3:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Crab:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1, 0, 1]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Crab2:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1, 0, 1]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Crab3:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1, 0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_4rpjo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Crab:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crab2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Crab3:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Crab:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Crab2:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Crab3:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Crab:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, -13)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Crab2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-13, 14)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Crab3:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-14, -6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n58bb"]
+_data = {
+"RESET": SubResource("Animation_4rpjo"),
+"crab_disappear": SubResource("Animation_f1g5t")
+}
+
 [node name="TileMap" type="TileMap"]
 z_index = -1
 y_sort_enabled = true
@@ -842,6 +1077,7 @@ metadata/_edit_vertical_guides_ = [-182.0, 183.0]
 
 [node name="ExitArea" parent="." instance=ExtResource("3_wsuiv")]
 position = Vector2(-180, 0)
+next_map_path = "res://Level/Monster_map/Monster_map.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
 shape = SubResource("CapsuleShape2D_u6mme")
@@ -853,3 +1089,43 @@ position = Vector2(-171, 40)
 zoom = Vector2(2.2, 2.2)
 
 [node name="ArtifactArea" parent="." instance=ExtResource("2_xdwbe")]
+
+[node name="Sunrays" parent="." instance=ExtResource("3_2cjxh")]
+
+[node name="CrabDetection" type="Area2D" parent="."]
+position = Vector2(26, 17)
+monitorable = false
+script = ExtResource("4_gjn6v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrabDetection"]
+shape = SubResource("CircleShape2D_i2sog")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CrabDetection"]
+libraries = {
+"": SubResource("AnimationLibrary_n58bb")
+}
+
+[node name="Crab" type="Sprite2D" parent="CrabDetection"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(6, -13)
+texture = ExtResource("4_dhxgg")
+hframes = 2
+
+[node name="Crab2" type="Sprite2D" parent="CrabDetection"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-13, 14)
+rotation = -3.14159
+texture = ExtResource("4_dhxgg")
+hframes = 2
+
+[node name="Crab3" type="Sprite2D" parent="CrabDetection"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-14, -6)
+rotation = -1.5708
+texture = ExtResource("4_dhxgg")
+hframes = 2
+
+[connection signal="body_entered" from="CrabDetection" to="CrabDetection" method="_on_body_entered"]

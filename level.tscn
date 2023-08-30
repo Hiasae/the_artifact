@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://f268fnr3yxat"]
+[gd_scene load_steps=12 format=3 uid="uid://f268fnr3yxat"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_4aq62"]
 [ext_resource type="PackedScene" uid="uid://c0ahu1mcjgx62" path="res://UI/pause_menu.tscn" id="1_mkdgr"]
-[ext_resource type="Shader" path="res://level.gdshader" id="2_3knvf"]
 [ext_resource type="PackedScene" uid="uid://bq2id4sxb3sma" path="res://Level/Start_map/Start_map.tscn" id="3_21hal"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="4_cxmpg"]
 [ext_resource type="Texture2D" uid="uid://4nvscrbm1kmy" path="res://Art/protag.png" id="5_mrfuf"]
@@ -14,34 +13,6 @@ size = Vector2(400, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1xpb"]
 size = Vector2(40, 361)
-
-[sub_resource type="Gradient" id="Gradient_jrnr7"]
-offsets = PackedFloat32Array(0.243902, 0.772358)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_40e53"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mkkns"]
-width = 256
-height = 256
-seamless = true
-color_ramp = SubResource("Gradient_jrnr7")
-noise = SubResource("FastNoiseLite_40e53")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_8lofx"]
-noise_type = 3
-fractal_octaves = 2
-fractal_lacunarity = 1.275
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_scb6j"]
-seamless = true
-noise = SubResource("FastNoiseLite_8lofx")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_it40s"]
-shader = ExtResource("2_3knvf")
-shader_parameter/timescale = 0.03
-shader_parameter/timescale2 = 0.05
-shader_parameter/noi = SubResource("NoiseTexture2D_mkkns")
-shader_parameter/noi2 = SubResource("NoiseTexture2D_scb6j")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4s64a"]
 radius = 3.0
@@ -72,18 +43,6 @@ shape = SubResource("RectangleShape2D_e1xpb")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Level/LevelBorder"]
 position = Vector2(201, -4)
 shape = SubResource("RectangleShape2D_e1xpb")
-
-[node name="Fog" type="CanvasLayer" parent="Level"]
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="Level/Fog"]
-material = SubResource("ShaderMaterial_it40s")
-custom_minimum_size = Vector2(200, 200)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Map piece" type="Node2D" parent="Level"]
 y_sort_enabled = true

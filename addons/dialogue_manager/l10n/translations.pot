@@ -38,6 +38,9 @@ msgstr ""
 msgid "settings"
 msgstr ""
 
+msgid "show_support"
+msgstr ""
+
 msgid "docs"
 msgstr ""
 
@@ -146,6 +149,9 @@ msgstr ""
 msgid "settings.include_failed_responses"
 msgstr ""
 
+msgid "settings.ignore_missing_state_values"
+msgstr ""
+
 msgid "settings.custom_test_scene"
 msgstr ""
 
@@ -186,6 +192,9 @@ msgid "files_list.filter"
 msgstr ""
 
 msgid "titles_list.filter"
+msgstr ""
+
+msgid "errors.key_not_found"
 msgstr ""
 
 msgid "errors.line_and_message"

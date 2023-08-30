@@ -45,6 +45,9 @@ msgstr "Translations"
 msgid "settings"
 msgstr "Settings"
 
+msgid "show_support"
+msgstr "Support Dialogue Manager"
+
 msgid "docs"
 msgstr "Docs"
 
@@ -156,6 +159,9 @@ msgstr "Wrap long lines"
 msgid "settings.include_failed_responses"
 msgstr "Include responses with failed conditions"
 
+msgid "settings.ignore_missing_state_values"
+msgstr "Skip over missing state value errors (not recommended)"
+
 msgid "settings.custom_test_scene"
 msgstr "Custom test scene (must extend BaseDialogueTestScene)"
 
@@ -197,6 +203,9 @@ msgstr "Filter files"
 
 msgid "titles_list.filter"
 msgstr "Filter titles"
+
+msgid "errors.key_not_found"
+msgstr "Key \"{key}\" not found."
 
 msgid "errors.line_and_message"
 msgstr "Error at {line}, {column}: {message}"

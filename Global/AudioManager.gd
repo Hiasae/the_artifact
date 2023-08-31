@@ -38,7 +38,11 @@ func play_ambience(path : String,transition_time : float = 1.5):
 func increase_ambience(transition_time : float = 1.5):
 	var tw = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT)
 	tw.tween_property(amb_player,"volume_db",-5.0,transition_time)
-
+	
+func lower_ambience(transition_time : float = 1.5):
+	var tw = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT)
+	tw.tween_property(amb_player,"volume_db",-25.0,transition_time)
+	
 func reset_ambience(transition_time : float = 1.5):
 	var tw = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT)
 	tw.tween_property(amb_player,"volume_db",-15.0,transition_time)

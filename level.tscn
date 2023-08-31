@@ -2,28 +2,16 @@
 
 [ext_resource type="Script" path="res://level.gd" id="1_4aq62"]
 [ext_resource type="PackedScene" uid="uid://c0ahu1mcjgx62" path="res://UI/pause_menu.tscn" id="1_mkdgr"]
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_vf3kb"]
 [ext_resource type="PackedScene" uid="uid://bq2id4sxb3sma" path="res://Level/Start_map/Start_map.tscn" id="3_21hal"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="4_cxmpg"]
 [ext_resource type="Texture2D" uid="uid://4nvscrbm1kmy" path="res://Art/protag.png" id="5_mrfuf"]
 [ext_resource type="Texture2D" uid="uid://cq32bv2uwva2k" path="res://Art/emotes.png" id="5_w70ow"]
 [ext_resource type="AudioStream" uid="uid://8bmha1voamms" path="res://Audio/walk_on_sand.ogg" id="6_8yrns"]
 [ext_resource type="PackedScene" uid="uid://ck5wdhgt5w0gr" path="res://UI/Transition.tscn" id="6_cndb8"]
-[ext_resource type="Script" path="res://ui/main_menu.gd" id="9_n3u7s"]
 [ext_resource type="Theme" uid="uid://doygc3hc1saup" path="res://UI/MainTheme.theme" id="10_ndctp"]
 [ext_resource type="PackedScene" uid="uid://pg7u1mv1yhwo" path="res://Battle/BattleSystem.tscn" id="10_ypmci"]
 [ext_resource type="Script" path="res://UI/EndText.gd" id="12_ghrgy"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktbqi"]
-size = Vector2(400, 40)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1xpb"]
-size = Vector2(40, 361)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4s64a"]
-radius = 3.0
-height = 6.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5sr6i"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_464cp"]
 
@@ -36,6 +24,18 @@ height = 6.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1stcq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a5v5i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktbqi"]
+size = Vector2(400, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1xpb"]
+size = Vector2(40, 361)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4s64a"]
+radius = 3.0
+height = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5sr6i"]
 
 [sub_resource type="Animation" id="Animation_81fkk"]
 resource_name = "show_text"
@@ -124,86 +124,6 @@ _data = {
 
 [node name="Main" type="Node2D"]
 
-[node name="Level" type="Node2D" parent="." groups=["Level"]]
-y_sort_enabled = true
-script = ExtResource("1_4aq62")
-
-[node name="Camera2D" type="Camera2D" parent="Level"]
-zoom = Vector2(2.2, 2.2)
-
-[node name="LevelBorder" type="StaticBody2D" parent="Level"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/LevelBorder"]
-position = Vector2(0, 156.22)
-shape = SubResource("RectangleShape2D_ktbqi")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/LevelBorder"]
-position = Vector2(-201, -1.5)
-shape = SubResource("RectangleShape2D_e1xpb")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Level/LevelBorder"]
-position = Vector2(201, -4)
-shape = SubResource("RectangleShape2D_e1xpb")
-
-[node name="Map piece" type="Node2D" parent="Level"]
-y_sort_enabled = true
-
-[node name="TileMap" parent="Level/Map piece" instance=ExtResource("3_21hal")]
-
-[node name="Player" type="CharacterBody2D" parent="Level"]
-y_sort_enabled = true
-position = Vector2(145, 12)
-script = ExtResource("4_cxmpg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Player"]
-position = Vector2(0, 1.32)
-shape = SubResource("CapsuleShape2D_4s64a")
-
-[node name="Sprite2D" type="Sprite2D" parent="Level/Player"]
-z_index = 1
-y_sort_enabled = true
-texture_filter = 5
-texture_repeat = 1
-texture = ExtResource("5_mrfuf")
-offset = Vector2(0, -5.465)
-hframes = 4
-vframes = 3
-
-[node name="InteractArea" type="Area2D" parent="Level/Player"]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Player/InteractArea"]
-position = Vector2(0, 4.5)
-shape = SubResource("CircleShape2D_5sr6i")
-
-[node name="Emote" type="Sprite2D" parent="Level/Player"]
-z_index = 3
-position = Vector2(1, -13)
-texture = ExtResource("5_w70ow")
-hframes = 2
-vframes = 2
-
-[node name="Footsteps" type="AudioStreamPlayer" parent="Level/Player"]
-stream = ExtResource("6_8yrns")
-bus = &"SFX"
-
-[node name="BattleLayer" type="CanvasLayer" parent="."]
-
-[node name="BattleSystem" parent="BattleLayer" groups=["Battlesystem"] instance=ExtResource("10_ypmci")]
-process_mode = 4
-visible = false
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_mkdgr")]
-visible = false
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="TransitionLayer" parent="." groups=["Transition"] instance=ExtResource("6_cndb8")]
-layer = 3
-
 [node name="MainMenuLayer" type="CanvasLayer" parent="."]
 process_mode = 3
 
@@ -215,7 +135,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
-script = ExtResource("9_n3u7s")
+script = ExtResource("1_vf3kb")
 
 [node name="MarginContainer" type="MarginContainer" parent="MainMenuLayer/MainMenu"]
 layout_mode = 1
@@ -265,6 +185,86 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_eiyte")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1stcq")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_a5v5i")
 text = "Exit"
+
+[node name="Level" type="Node2D" parent="." groups=["Level"]]
+y_sort_enabled = true
+script = ExtResource("1_4aq62")
+
+[node name="Camera2D" type="Camera2D" parent="Level"]
+zoom = Vector2(2.2, 2.2)
+
+[node name="LevelBorder" type="StaticBody2D" parent="Level"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/LevelBorder"]
+position = Vector2(0, 156.22)
+shape = SubResource("RectangleShape2D_ktbqi")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/LevelBorder"]
+position = Vector2(-201, -1.5)
+shape = SubResource("RectangleShape2D_e1xpb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Level/LevelBorder"]
+position = Vector2(201, -4)
+shape = SubResource("RectangleShape2D_e1xpb")
+
+[node name="Map piece" type="Node2D" parent="Level"]
+y_sort_enabled = true
+
+[node name="TileMap" parent="Level/Map piece" instance=ExtResource("3_21hal")]
+
+[node name="Player" type="CharacterBody2D" parent="Level"]
+y_sort_enabled = true
+position = Vector2(145, 12)
+script = ExtResource("4_cxmpg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Player"]
+position = Vector2(0, 1.32)
+shape = SubResource("CapsuleShape2D_4s64a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Player"]
+z_index = 1
+y_sort_enabled = true
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("5_mrfuf")
+offset = Vector2(0, -5.465)
+hframes = 4
+vframes = 3
+
+[node name="InteractArea" type="Area2D" parent="Level/Player"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Player/InteractArea"]
+position = Vector2(0, 4.5)
+shape = SubResource("CircleShape2D_5sr6i")
+
+[node name="Emote" type="Sprite2D" parent="Level/Player"]
+z_index = 3
+position = Vector2(1, -13)
+texture = ExtResource("5_w70ow")
+hframes = 2
+vframes = 2
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="Level/Player"]
+stream = ExtResource("6_8yrns")
+bus = &"SFX"
+
+[node name="BattleLayer" type="CanvasLayer" parent="."]
+
+[node name="BattleSystem" parent="BattleLayer" groups=["Battlesystem"] instance=ExtResource("10_ypmci")]
+process_mode = 4
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_mkdgr")]
+visible = false
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TransitionLayer" parent="." groups=["Transition"] instance=ExtResource("6_cndb8")]
+layer = 3
 
 [node name="EndText" type="CanvasLayer" parent="."]
 layer = 4

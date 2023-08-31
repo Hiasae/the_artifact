@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bq2id4sxb3sma"]
+[gd_scene load_steps=26 format=3 uid="uid://bq2id4sxb3sma"]
 
 [ext_resource type="Texture2D" uid="uid://dy3r5n4rgb2b4" path="res://Art/beach_tileset-export.png" id="1_w8f20"]
 [ext_resource type="PackedScene" uid="uid://buuxibw1cgnla" path="res://Level/friend.tscn" id="2_gtrn8"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://b0fh3y54yxm5s" path="res://Art/M_12.png" id="4_nh1mc"]
 [ext_resource type="Resource" uid="uid://ckujshmep2tog" path="res://Dialogue/Laura.dialogue" id="5_hpj4n"]
 [ext_resource type="Texture2D" uid="uid://b0ulhfw2ldjvl" path="res://Art/ball.png" id="5_x4edy"]
-[ext_resource type="Script" path="res://Level/Start_map/test.gd" id="7_3ta7e"]
 [ext_resource type="Resource" uid="uid://h4fcncokej8t" path="res://Dialogue/Nathan.dialogue" id="7_gdexp"]
 [ext_resource type="Texture2D" uid="uid://4nvscrbm1kmy" path="res://Art/protag.png" id="7_gp5ht"]
 [ext_resource type="PackedScene" uid="uid://cc4k3scbieswe" path="res://Level/sunrays.tscn" id="10_2vuup"]
@@ -1390,7 +1389,6 @@ shape = SubResource("CapsuleShape2D_a0ji8")
 libraries = {
 "": SubResource("AnimationLibrary_vgtkx")
 }
-script = ExtResource("7_3ta7e")
 
 [node name="PlayerSpawn" type="Marker2D" parent="." groups=["PlayerSpawns"]]
 position = Vector2(-37, 45)
@@ -1431,5 +1429,3 @@ amount = 32
 stream = ExtResource("13_log86")
 bus = &"SFX"
 script = ExtResource("16_5p64u")
-
-[connection signal="intro_played" from="AnimationPlayer" to="Nathan/AnimationPlayer" method="play" binds= ["kicking"]]

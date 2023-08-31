@@ -22,7 +22,7 @@ shape = SubResource("CircleShape2D_4efmq")
 
 [node name="Emote" type="Sprite2D" parent="."]
 z_index = 2
-texture_filter = 3
+texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, -16)
 texture = ExtResource("3_i2dio")
@@ -32,7 +32,7 @@ vframes = 2
 [node name="Character" type="Sprite2D" parent="."]
 z_index = 1
 y_sort_enabled = true
-texture_filter = 5
+texture_filter = 1
 texture = ExtResource("1_k1mse")
 offset = Vector2(0, -5.34)
 hframes = 4

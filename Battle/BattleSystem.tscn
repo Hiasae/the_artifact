@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Battle/BattleSystem.gd" id="1_7ufeq"]
 [ext_resource type="Texture2D" uid="uid://dnadalelko0ik" path="res://Art/blueface1.png" id="2_tfhtf"]
 [ext_resource type="Texture2D" uid="uid://bbrnbm4nnq2yw" path="res://Art/altface2.png" id="3_bf53c"]
+[ext_resource type="Texture2D" uid="uid://dxoccwtexinns" path="res://Art/BEACHBG5.png" id="3_eb4sh"]
 [ext_resource type="FontFile" uid="uid://bbmbdnnkf1cw2" path="res://UI/HomemadeApple-Regular.ttf" id="5_dog1o"]
-[ext_resource type="Texture2D" uid="uid://byiejb4yun5ks" path="res://Art/BEACHBG4.png" id="6_l6exm"]
 
 [sub_resource type="Animation" id="Animation_d635j"]
 length = 0.4
@@ -123,7 +123,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_nqxbi")
 
 [node name="Beachbg4" type="Sprite2D" parent="."]
 position = Vector2(400, 220)
-texture = ExtResource("6_l6exm")
+texture = ExtResource("3_eb4sh")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2

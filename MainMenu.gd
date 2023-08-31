@@ -1,10 +1,5 @@
 extends ColorRect
 
-#func _ready():
-	#AudioManager.play_music("res://Audio/Main_Menu.ogg")
-
-	#AudioManager.play_music("res://Audio/Main_Menu.ogg")
-
 func _on_start_button_button_down() -> void:
 	Global.level.start()
 	#get_tree().paused = false

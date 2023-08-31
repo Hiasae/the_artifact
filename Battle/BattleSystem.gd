@@ -95,7 +95,7 @@ func start_sequence():
 	display_emotion("Neutral")
 	display_text("You: What is that....thing?")
 	display_textMonster("........")
-	await get_tree().create_timer(4).timeout
+	await get_tree().create_timer(3).timeout
 	display_text("oh no")
 	%TopLabel.set("theme_override_colors/font_color", Color("#FF0000"))
 	display_textMonster("AHHHHHHHHHH")
@@ -114,12 +114,13 @@ func start_sequence():
 	await get_tree().create_timer(2).timeout
 	display_text("(what madness is this creature spewing... i better do something quick or ill die here!)")
 	display_emotion("Fear")
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(3).timeout
 	display_textMonster("COME HERE")
 	await get_tree().create_timer(2).timeout
 	$Altface2.show()
-	await get_tree().create_timer(1).timeout
 	AudioManager.lower_volume()
+	AudioManager.lower_ambience()
+	await get_tree().create_timer(1).timeout
 	SfxPlayer.play("res://Audio/monster_dying.ogg")
 	
 	Global.screen_darken()

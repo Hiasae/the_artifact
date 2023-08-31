@@ -1,5 +1,6 @@
 ~ first
-Max: The sea is quite calming.[wait = 1.5] I wish Joseph could be here.
+Max: The sea is quite calming. A good place to rest under a palm tree.
+I wish [wait = 1.0]Joseph could be here.
 => END
 
 ~ noise
@@ -12,10 +13,10 @@ Max: I could swear there was a strange stone right there.
 => END
 
 ~ scream
-Joseph: Have you heard that. We need to hurry and look for the others.
+Joseph: Have you heard that. We must hurry and look for the others.
 => END
 
 ~ monster_spotted
-Joseph: A monster is attacking her. Hurry you must help her.
+Joseph: A monster is attacking her. We must help her.
 
 => END

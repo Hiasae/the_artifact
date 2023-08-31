@@ -13,6 +13,8 @@ func setup():
 	battle = get_tree().get_nodes_in_group("Battlesystem")[0]
 	level = get_tree().get_nodes_in_group("Level")[0]
 	endtxt = get_tree().get_nodes_in_group("EndText")[0]
+	AudioManager.play_music("res://Audio/Main_Menu.ogg")
+	#level.start()
 
 #func do_event(val : String):
 #	match val:

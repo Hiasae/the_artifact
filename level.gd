@@ -4,6 +4,8 @@ extends Node2D
 @onready var map_piece = $"Map piece"
 
 
+func start():
+	$"Map piece/TileMap".start_map()
 
 func _ready():
 	Global.setup()
@@ -40,5 +42,5 @@ func change_map_piece(to : String, player_spawn_name : String):
 func setup_player():
 	player.global_position = get_tree().get_nodes_in_group("PlayerSpawns")[0].global_position
 	player.show()
-	player.unfreeze()
+
 	

@@ -12,20 +12,39 @@ static var self_instance
 const SPEED : float = 40
 @onready var interact_area = $InteractArea
 var frozen : bool = false
+@onready var emote = $Emote
+@onready var footsteps = $Footsteps
+
+@onready var dia = preload("res://Dialogue/Max.dialogue")
+
 
 func _ready():
 	self_instance = self
 	frozen = true
 	hide()
+
 	
 	
 func _process(_delta):
 	if frozen:
 		return
+	if interact_area.get_overlapping_areas().is_empty() and interact_area.get_overlapping_bodies().is_empty():
+		emote.hide()
+		return
+
+	if not interact_area.get_overlapping_areas().is_empty() and interact_area.get_overlapping_areas()[0].has_method("interact"):
+		emote.show()
+		emote.frame = 3
+
+	if not interact_area.get_overlapping_bodies().is_empty() and interact_area.get_overlapping_bodies()[0].has_method("interact"):
+		emote.show()
+		emote.frame = 3
+
 	if Input.is_action_just_pressed("interact"):
 		if not interact_area.get_overlapping_areas().is_empty() and interact_area.get_overlapping_areas()[0].has_method("interact"):
 			interact_area.get_overlapping_areas()[0].interact()
-
+		elif not interact_area.get_overlapping_bodies().is_empty() and interact_area.get_overlapping_bodies()[0].has_method("interact"):
+			interact_area.get_overlapping_bodies()[0].interact()
 
 func _physics_process(delta):
 	if frozen:
@@ -48,6 +67,8 @@ func update_sprite_animation(dir : Vector2, delta : float):
 	if anim_time > anim_update:
 		anim_time = 0
 		frame_y = (frame_y + 1)%3
+		footsteps.pitch_scale = (0.9+0.2*randf())
+		footsteps.play()
 		
 	frame_x = 2*int(dir.y < 0) 
 	if abs(dir.x) > 0:

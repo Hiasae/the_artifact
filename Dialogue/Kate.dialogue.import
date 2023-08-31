@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://byj2wk06rqgwb"
+path="res://.godot/imported/Kate.dialogue-ebb72fe85e05b5355d8b4cdfda584a36.tres"
+
+[deps]
+
+source_file="res://Dialogue/Kate.dialogue"
+dest_files=["res://.godot/imported/Kate.dialogue-ebb72fe85e05b5355d8b4cdfda584a36.tres"]
+
+[params]
+
+defaults=true

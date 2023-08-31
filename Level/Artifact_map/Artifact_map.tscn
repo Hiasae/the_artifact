@@ -1,5 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://de8w338dxtibu"]
+[gd_scene load_steps=26 format=3 uid="uid://de8w338dxtibu"]
 
+[ext_resource type="Script" path="res://Level/Artifact_map/Artifact_map.gd" id="1_mquhs"]
 [ext_resource type="PackedScene" uid="uid://bfrykwthyj2a1" path="res://Level/Artifact_map/artifact_area.tscn" id="2_xdwbe"]
 [ext_resource type="PackedScene" uid="uid://i4xmi2wkhfha" path="res://Level/sunrays_light.tscn" id="3_2cjxh"]
 [ext_resource type="PackedScene" uid="uid://hmo5lwpin6es" path="res://Level/exit_area.tscn" id="3_wsuiv"]
@@ -7,6 +8,9 @@
 [ext_resource type="Script" path="res://Level/Artifact_map/CrabDetection.gd" id="4_gjn6v"]
 [ext_resource type="PackedScene" uid="uid://buuxibw1cgnla" path="res://Level/friend.tscn" id="6_7jngo"]
 [ext_resource type="Texture2D" uid="uid://dxj03e70ve4rf" path="res://Art/M_08.png" id="7_l1fkm"]
+[ext_resource type="Script" path="res://Level/Start_map/SandFootstep.gd" id="9_amj4m"]
+[ext_resource type="Resource" uid="uid://bfmkn5l275uo5" path="res://Dialogue/DeadJoseph.dialogue" id="9_cm53d"]
+[ext_resource type="AudioStream" uid="uid://8bmha1voamms" path="res://Audio/walk_on_sand.ogg" id="9_islmx"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1s3cu"]
 load_path = "res://.godot/imported/beach_tileset-export.png-bb48965a07582cd557bd137d07832089.ctex"
@@ -1016,10 +1020,10 @@ tracks/6/path = NodePath("Crab:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 0, 1, 0, 1, 0, 1]
+"values": [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -1028,10 +1032,10 @@ tracks/7/path = NodePath("Crab2:frame")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 0, 1, 0, 1, 0, 1]
+"values": [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -1040,10 +1044,10 @@ tracks/8/path = NodePath("Crab3:frame")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 0, 1, 0, 1, 0, 1]
+"values": [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n58bb"]
@@ -1069,7 +1073,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_5hrj1"]
 resource_name = "flash"
-length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1077,10 +1080,10 @@ tracks/0/path = NodePath("ColorRect:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0426669, 0.2),
-"transitions": PackedFloat32Array(-2, -0.5, 1),
+"times": PackedFloat32Array(0, 0.0426669, 0.2, 0.341728, 0.4, 0.442667, 0.563488, 0.700044, 0.779136, 0.842667, 1),
+"transitions": PackedFloat32Array(-2, -0.5, 1, -0.5, 1, -0.5, 1, -0.5, 1, -0.5, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kqc7s"]
@@ -1094,7 +1097,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Friend1:position")
+tracks/0/path = NodePath("DeadJoseph:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1106,7 +1109,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Friend1:frame_coord")
+tracks/1/path = NodePath("DeadJoseph:frame_coord")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1123,7 +1126,7 @@ step = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Friend1:position")
+tracks/0/path = NodePath("DeadJoseph:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1135,7 +1138,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Friend1:frame_coord")
+tracks/1/path = NodePath("DeadJoseph:frame_coord")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1143,6 +1146,23 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 0), Vector2i(1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SandFootstep")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_active"
+}, {
+"args": [false],
+"method": &"set_active"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_07v14"]
@@ -1173,6 +1193,7 @@ layer_2/y_sort_enabled = true
 layer_2/y_sort_origin = 0
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(917495, 851968, 21, 983031, 851968, 22, 917496, 917504, 21, 983032, 917504, 22, 720886, 655360, 18, 786422, 655360, 19, 851958, 655360, 20, 720887, 720896, 18, 786423, 720896, 23, 851959, 720896, 24, 655352, 786432, 17, 720888, 786432, 18, 786424, 786432, 23, 851960, 786432, 24, 655353, 851968, 17, 720889, 851968, 18, 786425, 917504, 23, 851961, 917504, 24, 655354, 917504, 17, 720890, 917504, 18, 786426, 917504, 19, 851962, 917504, 20, 655347, 458752, 19, 720883, 458752, 20, 786419, 458752, 23, 851955, 458752, 22, 655348, 524288, 19, 720884, 524288, 20, 786420, 524288, 23, 851956, 524288, 22, 655349, 589824, 19, 720885, 589824, 20, 786421, 589824, 21, 851957, 589824, 22, 655359, 655360, 18, 720895, 655360, 19, 786431, 655360, 20, 851967, 655360, 21, 917503, 655360, 22, 589824, 720896, 18, 655360, 720896, 19, 720896, 720896, 20, 786432, 720896, 21, 851968, 720896, 22, 524289, 786432, 17, 589825, 786432, 18, 655361, 786432, 19, 720897, 786432, 20, 786433, 786432, 21, 851969, 786432, 22, 524290, 851968, 17, 589826, 851968, 18, 655362, 851968, 19, 720898, 851968, 20, 524291, 917504, 17, 589827, 917504, 18, 655363, 917504, 19, 720915, 655360, 18, 786451, 655360, 19, 851987, 655360, 20, 917523, 655360, 21, 983059, 655360, 22, 720916, 720896, 18, 786452, 720896, 19, 851988, 720896, 20, 917524, 720896, 21, 983060, 720896, 22, 655381, 786432, 17, 720917, 786432, 18, 786453, 786432, 19, 851989, 786432, 20, 917525, 786432, 21, 983061, 786432, 22, 655382, 851968, 17, 720918, 851968, 18, 786454, 851968, 19, 851990, 851968, 20, 655383, 917504, 17, 720919, 917504, 18, 786455, 917504, 19, 458777, 655360, 18, 524313, 655360, 19, 589849, 655360, 20, 655385, 655360, 21, 720921, 655360, 22, 458778, 720896, 18, 524314, 720896, 23, 589850, 720896, 24, 655386, 720896, 21, 720922, 720896, 22, 393243, 786432, 17, 458779, 786432, 18, 524315, 786432, 23, 589851, 786432, 24, 655387, 786432, 21, 720923, 786432, 22, 393244, 851968, 17, 458780, 851968, 18, 524316, 851968, 19, 589852, 851968, 20, 393245, 917504, 17, 458781, 917504, 18, 524317, 917504, 19, 786448, 458752, 13, 851984, 458752, 14, 917520, 458752, 15, 983056, 458752, 16, 786449, 524288, 13, 851985, 524288, 14, 917521, 524288, 15, 983057, 524288, 16, 786450, 589824, 13, 851986, 589824, 14, 917522, 589824, 15, 983058, 589824, 16, 524301, 458752, 13, 589837, 458752, 14, 655373, 458752, 15, 720909, 458752, 16, 524302, 524288, 13, 589838, 524288, 14, 655374, 524288, 15, 720910, 524288, 16, 524303, 589824, 13, 589839, 589824, 14, 655375, 589824, 15, 720911, 589824, 16, 589805, 458752, 13, 655341, 458752, 14, 720877, 458752, 15, 786413, 458752, 16, 589806, 524288, 13, 655342, 524288, 14, 720878, 524288, 15, 786414, 524288, 16, 589807, 589824, 13, 655343, 589824, 14, 720879, 589824, 15, 786415, 589824, 16, 720899, 458752, 13, 786435, 458752, 17, 851971, 458752, 18, 917507, 458752, 16, 720900, 524288, 13, 786436, 524288, 17, 851972, 524288, 18, 917508, 524288, 16, 720901, 589824, 13, 786437, 589824, 17, 851973, 589824, 18, 917509, 589824, 16, 720904, 655360, 18, 786440, 655360, 19, 851976, 655360, 20, 720905, 720896, 18, 786441, 720896, 19, 851977, 720896, 20, 655370, 786432, 17, 720906, 786432, 18, 786442, 786432, 19, 851978, 786432, 20, 655371, 851968, 17, 720907, 851968, 18, 786443, 851968, 19, 851979, 851968, 20, 655372, 917504, 17, 720908, 917504, 18, 786444, 917504, 19, 917513, 851968, 21, 983049, 851968, 22, 917514, 917504, 21, 983050, 917504, 22, 786457, 458752, 19, 851993, 458752, 20, 917529, 458752, 21, 983065, 458752, 22, 786458, 524288, 19, 851994, 524288, 20, 917530, 524288, 21, 983066, 524288, 22, 786459, 589824, 19, 851995, 589824, 20, 917531, 589824, 21, 983067, 589824, 22)
+script = ExtResource("1_mquhs")
 metadata/_edit_horizontal_guides_ = [-136.0, 137.0]
 metadata/_edit_vertical_guides_ = [-182.0, 183.0]
 
@@ -1244,16 +1265,22 @@ libraries = {
 "": SubResource("AnimationLibrary_kqc7s")
 }
 
-[node name="Friend1" parent="." instance=ExtResource("6_7jngo")]
+[node name="DeadJoseph" parent="." instance=ExtResource("6_7jngo")]
 position = Vector2(0, 179)
 character_sprite = ExtResource("7_l1fkm")
 frame_coord = Vector2i(2, 0)
 emote_id = -1
-has_collision = true
+dialogue = ExtResource("9_cm53d")
+can_interact = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_07v14")
 }
+
+[node name="SandFootstep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_islmx")
+bus = &"SFX"
+script = ExtResource("9_amj4m")
 
 [connection signal="body_entered" from="CrabDetection" to="CrabDetection" method="_on_body_entered"]

@@ -11,9 +11,9 @@ var is_paused : bool = false
 
 func _ready():
 	hide()
-	AudioServer.set_bus_volume_db(0,linear_to_db(0.8))
-	AudioServer.set_bus_volume_db(1,linear_to_db(0.8))
-	AudioServer.set_bus_volume_db(2,linear_to_db(0.8))
+	AudioServer.set_bus_volume_db(0,linear_to_db(0.7))
+	AudioServer.set_bus_volume_db(1,linear_to_db(0.7))
+	AudioServer.set_bus_volume_db(2,linear_to_db(0.7))
 
 
 func _unhandled_input(event: InputEvent) -> void:

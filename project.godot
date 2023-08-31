@@ -68,7 +68,7 @@ interact={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogue/Dialogue1.dialogue", "res://Dialogue/friend1.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogue/Matt.dialogue", "res://Dialogue/Nathan.dialogue", "res://Dialogue/Laura.dialogue", "res://Dialogue/Kate.dialogue", "res://Dialogue/DeadJoseph.dialogue", "res://Dialogue/Max.dialogue")
 
 [rendering]
 

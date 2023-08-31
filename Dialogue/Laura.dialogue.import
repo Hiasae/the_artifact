@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://ckujshmep2tog"
+path="res://.godot/imported/Laura.dialogue-26a2937ed91543e0c861b06a6264c22e.tres"
+
+[deps]
+
+source_file="res://Dialogue/Laura.dialogue"
+dest_files=["res://.godot/imported/Laura.dialogue-26a2937ed91543e0c861b06a6264c22e.tres"]
+
+[params]
+
+defaults=true

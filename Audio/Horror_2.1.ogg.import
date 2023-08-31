@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Horror_2.1.ogg-e7e4397dcc6e887d8e10cb5124227e
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

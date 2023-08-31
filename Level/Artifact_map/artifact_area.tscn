@@ -69,6 +69,7 @@ _data = {
 
 [node name="ArtifactArea" type="Area2D"]
 position = Vector2(26, 17)
+collision_layer = 2
 monitoring = false
 script = ExtResource("1_583r1")
 

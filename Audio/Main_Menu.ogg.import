@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/Main_Menu.ogg-8e447b399d1012b4005b659e0b6ce14
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

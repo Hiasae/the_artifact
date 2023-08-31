@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://bfmkn5l275uo5"
+path="res://.godot/imported/DeadJoseph.dialogue-e80de8c068136b5591ca1035e548fccf.tres"
+
+[deps]
+
+source_file="res://Dialogue/DeadJoseph.dialogue"
+dest_files=["res://.godot/imported/DeadJoseph.dialogue-e80de8c068136b5591ca1035e548fccf.tres"]
+
+[params]
+
+defaults=true

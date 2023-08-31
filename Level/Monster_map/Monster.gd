@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var frozen : bool = false
-const SPEED : float = 80
+const SPEED : float = 65
 var chasing_player : bool = false
 
 signal start_battle
@@ -24,9 +24,12 @@ func _physics_process(_delta):
 	
 
 func _on_detection_body_entered(body):
-	if body is Player:
+	if body is Player and not chasing_player:
+		SfxPlayer.play("res://Audio/monster_scream.ogg")
 		chasing_player = true
 
 
 func _on_fight_detection_body_entered(body):
-	emit_signal("start_battle","first")
+	if body is Player:
+		SfxPlayer.play("res://Audio/monster_scream_fight_initiates.ogg")
+		emit_signal("start_battle","first")

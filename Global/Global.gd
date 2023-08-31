@@ -9,12 +9,12 @@ func setup():
 	battle = get_tree().get_nodes_in_group("Battlesystem")[0]
 	level = get_tree().get_nodes_in_group("Level")[0]
 
-func do_event(val : String):
-	match val:
-		"find_artifact":
-			print("found_artifact")
-			get_tree().get_nodes_in_group("Level_exits")[0].activate()
-			#start_battle("first")
+#func do_event(val : String):
+#	match val:
+#		"find_artifact":
+#			print("found_artifact")
+#			get_tree().get_nodes_in_group("Level_exits")[0].activate()
+#			#start_battle("first")
 
 
 func start_battle(id : String):

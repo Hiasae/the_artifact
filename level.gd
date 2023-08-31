@@ -19,6 +19,10 @@ func darken_level():
 
 
 func change_map_piece(to : String, player_spawn_name : String):
+	if to == "res://Level/Artifact_map/Artifact_map.tscn":
+		AudioManager.lower_volume()
+	elif to == "res://Level/Monster_map/Monster_map.tscn":
+		AudioManager.play("res://Audio/Horror_2.1.ogg")
 	map_piece.get_child(0).queue_free()
 	var new_piece = load(to).instantiate()
 	map_piece.call_deferred("add_child",new_piece)

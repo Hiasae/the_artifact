@@ -1,0 +1,12 @@
+~ start
+
+Max: It can`t be...
+Joseph: What are you talking about.
+Max: You are dead.
+Joseph:...did you hit your head? I came here to surprise you. 
+How long has it been, since we were on a vacation together.
+[wait=1.5]
+Max: ...[do SfxPlayer.play(res://Audio/monster_scream.ogg)]
+Joseph: Have you heard that. We need to hurry and look for the others.
+
+=> END

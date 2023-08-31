@@ -10,10 +10,10 @@ radius = 4.0
 [node name="Friend1" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
+collision_layer = 3
 script = ExtResource("1_louj4")
 character_sprite = ExtResource("1_k1mse")
 frame_coord = Vector2i(1, 0)
-has_collision = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
@@ -21,7 +21,7 @@ position = Vector2(0, 1.78)
 shape = SubResource("CircleShape2D_4efmq")
 
 [node name="Emote" type="Sprite2D" parent="."]
-z_index = 1
+z_index = 2
 texture_filter = 3
 texture_repeat = 1
 position = Vector2(0, -16)
@@ -30,6 +30,8 @@ hframes = 2
 vframes = 2
 
 [node name="Character" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
 texture_filter = 5
 texture = ExtResource("1_k1mse")
 offset = Vector2(0, -5.34)

@@ -21,13 +21,13 @@ signal textbox_closed
 func start():
 	set_health($%Healthbar, State.current_health, State.max_health)
 	$Altface2.hide()
-	
+	$AudioStreamPlayer2.play()
 	display_text("Darkness beginns to creep in, you feel it approaching")
 	await Signal(self, "textbox_closed")
 	$Player.show()
+	
 
 func _ready():
-	$AudioStreamPlayer2.play()
 	display_emotion("Neutral")
 	set_health($%Healthbar, State.current_health, State.max_health)
 	$Altface2.hide()
@@ -125,7 +125,8 @@ func start_sequence():
 	await get_tree().create_timer(4).timeout
 	$Altface2.show()
 	await get_tree().create_timer(1).timeout
-	get_tree().change_scene_to_file("res://3dlevel.tscn")
+	
+	#get_tree().change_scene_to_file("res://3dlevel.tscn")
 
 
 

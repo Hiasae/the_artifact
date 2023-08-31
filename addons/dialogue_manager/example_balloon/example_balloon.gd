@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var dialogue_label := $Balloon/Margin/VBox/DialogueLabel
 @onready var responses_menu: VBoxContainer = $Balloon/Margin/VBox/Responses
 @onready var response_template: RichTextLabel = %ResponseTemplate
+@onready var talk_sound : AudioStreamPlayer = $TalkSound
 
 ## The dialogue resource
 var resource: DialogueResource
@@ -97,6 +98,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 ## Start some dialogue
 func start(dialogue_resource: DialogueResource, title: String, extra_game_states: Array = []) -> void:
+	SfxPlayer.play("res://Audio/open_dialogie_box.ogg")
 	temporary_game_states = extra_game_states
 	is_waiting_for_input = false
 	resource = dialogue_resource
@@ -208,7 +210,16 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 		next(dialogue_line.next_id)
 	elif event.is_action_pressed("ui_accept") and get_viewport().gui_get_focus_owner() == balloon:
 		next(dialogue_line.next_id)
+	elif Input.is_action_just_pressed("interact"):
+		next(dialogue_line.next_id)
 
 
 func _on_margin_resized() -> void:
 	handle_resize()
+
+func _on_dialogue_label_spoke(letter: String, letter_index: int, speed: float) -> void:
+	if not letter in [" ", "."]:
+		var actual_speed: int = 4 if speed >= 1 else 2
+		if letter_index % actual_speed == 0:
+			talk_sound.play()
+			talk_sound.pitch_scale = randf_range(0.9, 1.1)

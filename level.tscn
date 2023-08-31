@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://f268fnr3yxat"]
+[gd_scene load_steps=26 format=3 uid="uid://f268fnr3yxat"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_4aq62"]
 [ext_resource type="PackedScene" uid="uid://c0ahu1mcjgx62" path="res://UI/pause_menu.tscn" id="1_mkdgr"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="9_n3u7s"]
 [ext_resource type="Theme" uid="uid://doygc3hc1saup" path="res://UI/MainTheme.theme" id="10_ndctp"]
 [ext_resource type="PackedScene" uid="uid://pg7u1mv1yhwo" path="res://Battle/BattleSystem.tscn" id="10_ypmci"]
+[ext_resource type="Script" path="res://UI/EndText.gd" id="12_ghrgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktbqi"]
 size = Vector2(400, 40)
@@ -23,6 +24,103 @@ radius = 3.0
 height = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5sr6i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_464cp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g80ln"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ophga"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eiyte"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1stcq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a5v5i"]
+
+[sub_resource type="Animation" id="Animation_81fkk"]
+resource_name = "show_text"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.53055),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExitButton:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4.62141, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ExitButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.60282, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_uvgtj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExitButton:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ExitButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wpu71"]
+_data = {
+"RESET": SubResource("Animation_uvgtj"),
+"show_text": SubResource("Animation_81fkk")
+}
 
 [node name="Main" type="Node2D"]
 
@@ -139,6 +237,8 @@ theme_override_constants/separation = 1
 [node name="Label" type="Label" parent="MainMenuLayer/MainMenu/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 72
 text = "The Artifact"
 horizontal_alignment = 1
@@ -147,12 +247,67 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("10_ndctp")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_464cp")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_g80ln")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ophga")
 text = "Start"
 
 [node name="ExitButton" type="Button" parent="MainMenuLayer/MainMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_eiyte")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_1stcq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_a5v5i")
 text = "Exit"
+
+[node name="EndText" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="EndText" groups=["EndText"]]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("12_ghrgy")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="EndText/MarginContainer"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 32
+text = "As you look up, you realize what terrible deed has been done. No monster was killed here..."
+visible_characters = 0
+visible_characters_behavior = 1
+visible_ratio = 0.0
+
+[node name="ExitButton" type="Button" parent="EndText/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+disabled = true
+text = "Exit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EndText/MarginContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_wpu71")
+}
 
 [connection signal="button_down" from="MainMenuLayer/MainMenu/MarginContainer/VBoxContainer/StartButton" to="MainMenuLayer/MainMenu" method="_on_start_button_button_down"]
 [connection signal="button_down" from="MainMenuLayer/MainMenu/MarginContainer/VBoxContainer/ExitButton" to="MainMenuLayer/MainMenu" method="_on_exit_button_button_down"]
+[connection signal="button_up" from="EndText/MarginContainer/ExitButton" to="EndText/MarginContainer" method="_on_exit_button_button_up"]

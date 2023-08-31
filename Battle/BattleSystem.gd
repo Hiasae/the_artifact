@@ -21,10 +21,11 @@ signal textbox_closed
 func start():
 	set_health($%Healthbar, State.current_health, State.max_health)
 	$Altface2.hide()
-	$AudioStreamPlayer2.play()
+	SfxPlayer.play("res://Audio/x2mate.com - Heartbeat Sound effect _ No Copyright (128 kbps).mp3")
 	display_text("Darkness beginns to creep in, you feel it approaching")
 	await Signal(self, "textbox_closed")
 	$Player.show()
+	AudioManager.play_music("res://Audio/Horror_boss.ogg")
 	
 
 func _ready():
@@ -40,7 +41,6 @@ func _ready():
 func _input(_event):
 	if (Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) and $Player/PlayerPanel/HBoxContainer/Textbox.visible:
 		emit_signal("textbox_closed")
-
 
 
 func set_health(progress_bar, health, _max_health):
@@ -80,51 +80,54 @@ func _on_flee_button_pressed():
 
 
 func _on_fight_button_pressed():
-		if attackcount == 1:
-			display_text("you try to subdue the monster with violence, it does not react")
-			attackcount = 2
-			turn_count = turn_count + 1
-		else:
-			display_text("It has no effect other than giving it more time to approach you")
-			turn_count = turn_count + 1
-	
-	
-#func _physics_process(delta):
-	
-	
+	if attackcount == 1:
+		SfxPlayer.play("res://Audio/mosnster_being_hit.ogg")
+		display_text("you try to subdue the monster with violence, it does not react")
+		attackcount = 2
+		turn_count = turn_count + 1
+	else:
+		SfxPlayer.play("res://Audio/mosnster_being_hit_2.ogg")
+		display_text("It has no effect other than giving it more time to approach you")
+		turn_count = turn_count + 1
 	
 	
 func start_sequence():
-	$AudioStreamPlayer2.stop()
-	$AudioStreamPlayer.play()
 	display_emotion("Neutral")
 	display_text("You: What is that....thing?")
 	display_textMonster("........")
-	await get_tree().create_timer(8).timeout
+	await get_tree().create_timer(4).timeout
 	display_text("oh no")
 	%TopLabel.set("theme_override_colors/font_color", Color("#FF0000"))
 	display_textMonster("AHHHHHHHHHH")
-	await get_tree().create_timer(4)
+	await get_tree().create_timer(4).timeout
 	display_text("You: its a Monster!")
 	display_textMonster(" @%#^&$@^&7")
 	await get_tree().create_timer(5).timeout
 	display_text("what?")
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(3).timeout
 	display_textMonster("(&(*&^*((*--love--*(^(&*(-What-^&*&%*&%^%&^$-doing")
 	$AnimationPlayer.play("RESET")
 	await get_tree().create_timer(4).timeout
 	display_text("You:(it can talk! what is this monstrosity ! it ....loves to do this? to kill me?!)")
-	await get_tree().create_timer(7).timeout
+	await get_tree().create_timer(3).timeout
 	display_textMonster("no-((^&*58-Love --*UH&*Y- to you*(&*&(")
 	await get_tree().create_timer(2).timeout
 	display_text("(what madness is this creature spewing... i better do something quick or ill die here!)")
 	display_emotion("Fear")
-	$AudioStreamPlayer2.play()
-	await get_tree().create_timer(13).timeout
+	await get_tree().create_timer(5).timeout
 	display_textMonster("COME HERE")
-	await get_tree().create_timer(4).timeout
+	await get_tree().create_timer(2).timeout
 	$Altface2.show()
 	await get_tree().create_timer(1).timeout
+	AudioManager.lower_volume()
+	SfxPlayer.play("res://Audio/monster_dying.ogg")
+	
+	Global.screen_darken()
+	await get_tree().create_timer(4).timeout
+	SfxPlayer.play("res://Audio/death_end_screen.ogg")
+	await get_tree().create_timer(9).timeout
+	Global.end_battle()
+	#Global.end_battle()
 	
 	#get_tree().change_scene_to_file("res://3dlevel.tscn")
 

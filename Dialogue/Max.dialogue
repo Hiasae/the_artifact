@@ -1,9 +1,21 @@
 ~ first
-
-Max: The sea is quite calming.
+Max: The sea is quite calming.[wait = 1.5] I wish Joseph could be here.
 => END
 
-~artifact
-Max: I could swear there was some strange stone right there.
+~ noise
+Max: I heard some noise coming from the right. I got to check it out.
+
+=> END
+
+~ artifact
+Max: I could swear there was a strange stone right there.
+=> END
+
+~ scream
+Joseph: Have you heard that. We need to hurry and look for the others.
+=> END
+
+~ monster_spotted
+Joseph: A monster is attacking her. Hurry you must help her.
 
 => END

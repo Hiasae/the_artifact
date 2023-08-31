@@ -1271,7 +1271,6 @@ character_sprite = ExtResource("7_l1fkm")
 frame_coord = Vector2i(2, 0)
 emote_id = -1
 dialogue = ExtResource("9_cm53d")
-can_interact = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

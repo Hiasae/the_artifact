@@ -974,10 +974,10 @@ tracks/8/path = NodePath("Kate:emote_id")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 6.9, 7.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 6.9, 7.2, 7.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [-1, -1, 1]
+"values": [-1, -1, 1, -1]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -1146,19 +1146,19 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Nathan:position")
+tracks/4/path = NodePath("Nathan:frame_coord")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-188, 28)]
+"update": 1,
+"values": [Vector2i(1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Nathan:frame_coord")
+tracks/5/path = NodePath("Matt:frame_coord")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1170,31 +1170,31 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Matt:frame_coord")
+tracks/6/path = NodePath("Kate:emote_id")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2i(1, 1)]
+"values": [-1]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Matt:position")
+tracks/7/path = NodePath("Laura:emote_id")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-187, 13)]
+"update": 1,
+"values": [-1]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Kate:emote_id")
+tracks/8/path = NodePath("Nathan:emote_id")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1206,7 +1206,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Laura:emote_id")
+tracks/9/path = NodePath("Matt:emote_id")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -1218,86 +1218,86 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Nathan:emote_id")
+tracks/10/path = NodePath("Nathan/ball:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [-1]
+"values": [false]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Matt:emote_id")
+tracks/11/path = NodePath("Friend5:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [-1]
+"update": 0,
+"values": [Vector2(-217, 45)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Nathan/ball:visible")
+tracks/12/path = NodePath("Friend5:frame_coord")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [Vector2i(1, 1)]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Friend5:position")
+tracks/13/path = NodePath("Nathan/ball:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-217, 45)]
+"values": [Vector2(-7, 0)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Friend5:frame_coord")
+tracks/14/path = NodePath("Friend5:visible")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2i(1, 1)]
+"values": [true]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("Nathan/ball:position")
+tracks/15/path = NodePath("Nathan:position")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-7, 0)]
+"values": [Vector2(-192, 35)]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Friend5:visible")
+tracks/16/path = NodePath("Matt:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(-191, 13)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vgtkx"]
@@ -1346,7 +1346,7 @@ emote_id = -1
 dialogue = ExtResource("5_hpj4n")
 
 [node name="Nathan" parent="." instance=ExtResource("2_gtrn8")]
-position = Vector2(-188, 28)
+position = Vector2(-192, 35)
 character_sprite = ExtResource("3_f14b6")
 frame_coord = Vector2i(1, 1)
 emote_id = -1
@@ -1365,7 +1365,7 @@ libraries = {
 }
 
 [node name="Matt" parent="." instance=ExtResource("2_gtrn8")]
-position = Vector2(-187, 13)
+position = Vector2(-191, 13)
 character_sprite = ExtResource("4_nh1mc")
 frame_coord = Vector2i(1, 1)
 emote_id = -1

@@ -4,10 +4,15 @@ extends Node
 @onready var battle
 @onready var level
 
+@onready var endtxt
+
+signal screen_darkened
+
 func setup():
 	tr_layer = get_tree().get_nodes_in_group("Transition")[0]
 	battle = get_tree().get_nodes_in_group("Battlesystem")[0]
 	level = get_tree().get_nodes_in_group("Level")[0]
+	endtxt = get_tree().get_nodes_in_group("EndText")[0]
 
 #func do_event(val : String):
 #	match val:
@@ -32,10 +37,21 @@ func start_battle(id : String):
 	tr_layer.fade_out()
 	
 func end_battle():
+	endtxt.show_text()
+	
+	#tr_layer.fade_in()
+	#await tr_layer.transition_ended
+	#battle.hide()
+	#battle.process_mode = Node.PROCESS_MODE_DISABLED
+	#level.process_mode =  Node.PROCESS_MODE_INHERIT
+	#get_tree().paused = false
+	#tr_layer.fade_out()
+
+func screen_darken():
 	tr_layer.fade_in()
 	await tr_layer.transition_ended
-	battle.hide()
-	battle.process_mode = Node.PROCESS_MODE_DISABLED
-	level.process_mode =  Node.PROCESS_MODE_INHERIT
-	#get_tree().paused = false
-	tr_layer.fade_out()
+	#emit_signal("screen_darkened")
+	
+#func screen_lighten():
+	#tr_layer.fade_out()
+	#await tr_layer.transition_ended

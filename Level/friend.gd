@@ -25,7 +25,6 @@ func _process(_delta):
 
 
 func interact():
-	print("ok")
 	if can_interact:
 		can_interact = false
 		#var bal = dia_balloon.instantiate()

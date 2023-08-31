@@ -22,7 +22,8 @@ func change_map_piece(to : String, player_spawn_name : String):
 	if to == "res://Level/Artifact_map/Artifact_map.tscn":
 		AudioManager.lower_volume()
 	elif to == "res://Level/Monster_map/Monster_map.tscn":
-		AudioManager.play("res://Audio/Horror_2.1.ogg")
+		AudioManager.play_music("res://Audio/Horror_2.1.ogg")
+		AudioManager.reset_ambience()
 	map_piece.get_child(0).queue_free()
 	var new_piece = load(to).instantiate()
 	map_piece.call_deferred("add_child",new_piece)
@@ -31,6 +32,8 @@ func change_map_piece(to : String, player_spawn_name : String):
 	for i in get_tree().get_nodes_in_group("PlayerSpawns"):
 		if player_spawn_name == i.name:
 			player.global_position = i.global_position
+			if not get_tree().get_nodes_in_group("DeadFriend").is_empty():
+				get_tree().get_nodes_in_group("DeadFriend")[0].global_position = i.global_position
 			return
 
 

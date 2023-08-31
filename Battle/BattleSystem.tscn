@@ -1,12 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://pg7u1mv1yhwo"]
+[gd_scene load_steps=18 format=3 uid="uid://pg7u1mv1yhwo"]
 
 [ext_resource type="Script" path="res://Battle/BattleSystem.gd" id="1_7ufeq"]
 [ext_resource type="Texture2D" uid="uid://dnadalelko0ik" path="res://Art/blueface1.png" id="2_tfhtf"]
 [ext_resource type="Texture2D" uid="uid://bbrnbm4nnq2yw" path="res://Art/altface2.png" id="3_bf53c"]
-[ext_resource type="AudioStream" uid="uid://ics4as8v03to" path="res://Battle/Horror_2.ogg" id="4_lqx50"]
-[ext_resource type="AudioStream" uid="uid://gwcffnfesej5" path="res://Level/x2mate.com - Heartbeat Sound effect _ No Copyright (128 kbps).mp3" id="5_oor86"]
+[ext_resource type="FontFile" uid="uid://bbmbdnnkf1cw2" path="res://UI/HomemadeApple-Regular.ttf" id="5_dog1o"]
 [ext_resource type="Texture2D" uid="uid://byiejb4yun5ks" path="res://Art/BEACHBG4.png" id="6_l6exm"]
-[ext_resource type="FontFile" uid="uid://cd75ldfs4jfew" path="res://Art/Wingdings-Regular-Font.ttf" id="7_cd0d1"]
 
 [sub_resource type="Animation" id="Animation_d635j"]
 length = 0.4
@@ -88,7 +86,6 @@ border_width_bottom = 3
 [sub_resource type="Theme" id="Theme_al556"]
 
 [node name="BattleSystem" type="Control"]
-process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,6 +94,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 script = ExtResource("1_7ufeq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -110,21 +108,6 @@ visible = false
 position = Vector2(576.5, 295)
 scale = Vector2(8.02098, 5.04)
 texture = ExtResource("3_bf53c")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_lqx50")
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_oor86")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 2
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 799.0
-offset_bottom = 599.0
-mouse_filter = 2
-color = Color(0, 0, 0, 0.588235)
 
 [node name="Background" type="Panel" parent="."]
 layout_mode = 1
@@ -144,11 +127,10 @@ texture = ExtResource("6_l6exm")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-offset_left = -295.0
-offset_top = -188.0
-offset_right = 505.0
-offset_bottom = 410.0
-scale = Vector2(1.69, 1.69)
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 801.0
+offset_bottom = 601.0
 mouse_filter = 2
 texture = ExtResource("2_tfhtf")
 stretch_mode = 3
@@ -266,7 +248,7 @@ anchor_right = 1.0
 offset_bottom = 37.0
 grow_horizontal = 2
 theme = SubResource("Theme_al556")
-theme_override_fonts/font = ExtResource("7_cd0d1")
+theme_override_fonts/font = ExtResource("5_dog1o")
 theme_override_font_sizes/font_size = 25
 text = "hello"
 horizontal_alignment = 1

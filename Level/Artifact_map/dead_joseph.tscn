@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3wu4n26u38dq"]
+
+[ext_resource type="Texture2D" uid="uid://dxj03e70ve4rf" path="res://Art/M_08.png" id="1_3d3yd"]
+[ext_resource type="Script" path="res://Level/Artifact_map/dead_joseph.gd" id="2_iggmr"]
+
+[node name="DeadJoseph" type="Sprite2D" groups=["DeadFriend"]]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, -5)
+texture = ExtResource("1_3d3yd")
+hframes = 4
+vframes = 3
+script = ExtResource("2_iggmr")

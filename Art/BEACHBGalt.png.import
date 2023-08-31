@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8sjs87iy3k7u"
-path="res://.godot/imported/NPCPortrait3.png-f155870b4066c2d268f31ddf3c6c04b4.ctex"
+uid="uid://eagkgxu3b40n"
+path="res://.godot/imported/BEACHBGalt.png-0cbdd97ad10b1e9d155205af32053662.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/NPCPortrait3.png"
-dest_files=["res://.godot/imported/NPCPortrait3.png-f155870b4066c2d268f31ddf3c6c04b4.ctex"]
+source_file="res://Art/BEACHBGalt.png"
+dest_files=["res://.godot/imported/BEACHBGalt.png-0cbdd97ad10b1e9d155205af32053662.ctex"]
 
 [params]
 

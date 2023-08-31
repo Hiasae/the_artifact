@@ -1073,6 +1073,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_5hrj1"]
 resource_name = "flash"
+length = 1.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1080,10 +1081,10 @@ tracks/0/path = NodePath("ColorRect:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0426669, 0.2, 0.341728, 0.4, 0.442667, 0.563488, 0.700044, 0.779136, 0.842667, 1),
-"transitions": PackedFloat32Array(-2, -0.5, 1, -0.5, 1, -0.5, 1, -0.5, 1, -0.5, 1),
+"times": PackedFloat32Array(0, 0.0426669, 0.2, 0.341728, 0.4, 0.442667, 0.563488, 0.700044, 0.779136, 0.842667, 1, 1.0806, 1.18436, 1.24789, 1.38912),
+"transitions": PackedFloat32Array(-2, -0.5, 1, -0.5, 1, -0.5, 1, -0.5, 1, -0.5, 1, -0.5, 1, -0.5, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kqc7s"]

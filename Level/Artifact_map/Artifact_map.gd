@@ -1,5 +1,5 @@
 extends TileMap
-
+@onready var bal = preload("res://addons/dialogue_manager/portraits_balloon/balloon.tscn")
 @onready var dia = preload("res://Dialogue/Max.dialogue")
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,7 +12,11 @@ func found_artifact()-> void:
 	$FlashingLights/AnimationPlayer.play("flash")
 	SfxPlayer.play("res://Audio/Light_Artifact.ogg")
 	await $FlashingLights/AnimationPlayer.animation_finished
-	DialogueManager.show_example_dialogue_balloon(dia,"artifact")
+	var b = bal.instantiate()
+	Global.level.add_child(b)
+	b.start(dia,"artifact")
+	
+	#DialogueManager.show_example_dialogue_balloon(dia,"artifact")
 	await DialogueManager.dialogue_ended
 	$AnimationPlayer.play("friend_meet")
 	await $AnimationPlayer.animation_finished
@@ -23,7 +27,10 @@ func replace_friend():
 	SfxPlayer.play("res://Audio/monster_scream.ogg")
 	await get_tree().create_timer(0.6).timeout
 	Player.self_instance.freeze()
-	DialogueManager.show_example_dialogue_balloon(dia,"scream")
+	var b = bal.instantiate()
+	Global.level.add_child(b)
+	b.start(dia,"scream")
+	#DialogueManager.show_example_dialogue_balloon(dia,"scream")
 	await DialogueManager.dialogue_ended
 	Player.self_instance.unfreeze()
 	var friend_sprite = load("res://Level/Artifact_map/dead_joseph.tscn").instantiate()

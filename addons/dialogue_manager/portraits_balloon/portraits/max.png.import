@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1suqig8xli3a"
-path="res://.godot/imported/NPCPortrait2.png-8f2e02d18a3da5bd20b6658aba46713e.ctex"
+uid="uid://bt45hqp2jnq0f"
+path="res://.godot/imported/max.png-83141daa805ba44b90ba763408e5788f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/NPCPortrait2.png"
-dest_files=["res://.godot/imported/NPCPortrait2.png-8f2e02d18a3da5bd20b6658aba46713e.ctex"]
+source_file="res://addons/dialogue_manager/portraits_balloon/portraits/max.png"
+dest_files=["res://.godot/imported/max.png-83141daa805ba44b90ba763408e5788f.ctex"]
 
 [params]
 

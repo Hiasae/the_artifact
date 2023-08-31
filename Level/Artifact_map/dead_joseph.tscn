@@ -6,8 +6,8 @@
 [node name="DeadJoseph" type="Sprite2D" groups=["DeadFriend"]]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(0, -5)
 texture = ExtResource("1_3d3yd")
+offset = Vector2(0, -5.34)
 hframes = 4
 vframes = 3
 script = ExtResource("2_iggmr")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5ufv8ci5q6t3"
-path="res://.godot/imported/nathan.png-d6953223324e904faba4ca08fd51dda9.ctex"
+uid="uid://c68neo5nuc82f"
+path="res://.godot/imported/Moonster2B.png-02cd2429d04c776bff7e6df9725e6a67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/dialogue_manager/portraits_balloon/portraits/nathan.png"
-dest_files=["res://.godot/imported/nathan.png-d6953223324e904faba4ca08fd51dda9.ctex"]
+source_file="res://Art/Moonster2B.png"
+dest_files=["res://.godot/imported/Moonster2B.png-02cd2429d04c776bff7e6df9725e6a67.ctex"]
 
 [params]
 

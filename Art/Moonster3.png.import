@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8a68yf01clr"
-path="res://.godot/imported/coco.png-0aeeb3d80b6e39cd470ed62f6c5021e3.ctex"
+uid="uid://1wvrgmmm2g2x"
+path="res://.godot/imported/Moonster3.png-e5bac0e63ad9d44c2623d55535d9ccc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/dialogue_manager/portraits_balloon/portraits/coco.png"
-dest_files=["res://.godot/imported/coco.png-0aeeb3d80b6e39cd470ed62f6c5021e3.ctex"]
+source_file="res://Art/Moonster3.png"
+dest_files=["res://.godot/imported/Moonster3.png-e5bac0e63ad9d44c2623d55535d9ccc0.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bq2id4sxb3sma"]
+[gd_scene load_steps=28 format=3 uid="uid://bq2id4sxb3sma"]
 
 [ext_resource type="Texture2D" uid="uid://dy3r5n4rgb2b4" path="res://Art/beach_tileset-export.png" id="1_w8f20"]
 [ext_resource type="PackedScene" uid="uid://buuxibw1cgnla" path="res://Level/friend.tscn" id="2_gtrn8"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://bkacpmkkkq7py" path="res://Dialogue/Matt.dialogue" id="10_rxuy4"]
 [ext_resource type="AudioStream" uid="uid://8bmha1voamms" path="res://Audio/walk_on_sand.ogg" id="13_log86"]
 [ext_resource type="Script" path="res://Level/Start_map/SandFootstep.gd" id="16_5p64u"]
+[ext_resource type="Script" path="res://Level/Start_map/WalkOffArea.gd" id="17_wqljm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_op4bq"]
 texture = ExtResource("1_w8f20")
@@ -1305,6 +1306,9 @@ _data = {
 "RESET": SubResource("Animation_xmft5")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kn8gj"]
+size = Vector2(28, 237)
+
 [node name="TileMap" type="TileMap"]
 z_index = -1
 y_sort_enabled = true
@@ -1429,3 +1433,13 @@ amount = 32
 stream = ExtResource("13_log86")
 bus = &"SFX"
 script = ExtResource("16_5p64u")
+
+[node name="WalkOffArea" type="Area2D" parent="."]
+position = Vector2(160, 0)
+script = ExtResource("17_wqljm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WalkOffArea"]
+position = Vector2(4, 27.5)
+shape = SubResource("RectangleShape2D_kn8gj")
+
+[connection signal="body_entered" from="WalkOffArea" to="WalkOffArea" method="_on_body_entered"]

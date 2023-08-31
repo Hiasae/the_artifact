@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var has_collision : bool = true
 @export var dialogue : DialogueResource
 @export var can_interact : bool = true
-#@onready var dia_balloon = preload("res://addons/dialogue_manager/portraits_balloon/balloon.tscn")
+@onready var dia_balloon = preload("res://addons/dialogue_manager/portraits_balloon/balloon.tscn")
 signal has_interacted
 
 
@@ -27,10 +27,10 @@ func _process(_delta):
 func interact():
 	if can_interact:
 		can_interact = false
-		#var bal = dia_balloon.instantiate()
-		#Global.level.add_child(bal)
-		#bal.start(dialogue,"start")
-		DialogueManager.show_example_dialogue_balloon(dialogue,"start")
+		var bal = dia_balloon.instantiate()
+		Global.level.add_child(bal)
+		bal.start(dialogue,"start")
+		#DialogueManager.show_example_dialogue_balloon(dialogue,"start")
 		Player.self_instance.freeze()
 		await DialogueManager.dialogue_ended
 		Player.self_instance.unfreeze()

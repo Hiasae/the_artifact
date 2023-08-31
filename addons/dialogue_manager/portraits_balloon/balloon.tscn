@@ -28,21 +28,22 @@ stream = ExtResource("2_b2tey")
 
 [node name="Balloon" type="ColorRect" parent="."]
 texture_filter = 2
-offset_right = 1152.0
-size_flags_horizontal = 3
+custom_minimum_size = Vector2(800, 180)
+offset_right = 800.0
+offset_bottom = 160.0
 color = Color(0, 0, 0, 1)
 
 [node name="Margin" type="MarginContainer" parent="Balloon"]
-custom_minimum_size = Vector2(0, 190)
+custom_minimum_size = Vector2(0, 160)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 190.0
+offset_bottom = 149.0
 grow_horizontal = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 metadata/_edit_layout_mode = 1
 
 [node name="HBox" type="HBoxContainer" parent="Balloon/Margin"]

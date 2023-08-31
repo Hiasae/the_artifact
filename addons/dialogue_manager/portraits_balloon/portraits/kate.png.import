@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5ufv8ci5q6t3"
-path="res://.godot/imported/nathan.png-d6953223324e904faba4ca08fd51dda9.ctex"
+uid="uid://lqrenywwifyj"
+path="res://.godot/imported/kate.png-1fcdae87370ed90e49961bcb7e4a2990.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/dialogue_manager/portraits_balloon/portraits/nathan.png"
-dest_files=["res://.godot/imported/nathan.png-d6953223324e904faba4ca08fd51dda9.ctex"]
+source_file="res://addons/dialogue_manager/portraits_balloon/portraits/kate.png"
+dest_files=["res://.godot/imported/kate.png-1fcdae87370ed90e49961bcb7e4a2990.ctex"]
 
 [params]
 

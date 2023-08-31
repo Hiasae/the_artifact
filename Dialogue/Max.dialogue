@@ -1,12 +1,17 @@
 ~ first
 Max: The sea is quite calming. A good place to rest under a palm tree.
-I wish [wait = 1.0]Joseph could be here.
+Max: I wish [wait = 1.0]Joseph could be here.
 => END
 
 ~ noise
 Max: I heard some noise coming from the right. I got to check it out.
 
 => END
+~ walk_off
+Max: I should talk to the others first.
+
+=> END
+
 
 ~ artifact
 Max: I could swear there was a strange stone right there.

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gancqfnacs4i"
-path="res://.godot/imported/NPCPortrait1Smile.png-6604f4f7c397af869c1805618b4eb4bb.ctex"
+uid="uid://b1suqig8xli3a"
+path="res://.godot/imported/matt.png-9337df20cfe3bed411a921cf3fd33b5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/NPCPortrait1Smile.png"
-dest_files=["res://.godot/imported/NPCPortrait1Smile.png-6604f4f7c397af869c1805618b4eb4bb.ctex"]
+source_file="res://addons/dialogue_manager/portraits_balloon/portraits/matt.png"
+dest_files=["res://.godot/imported/matt.png-9337df20cfe3bed411a921cf3fd33b5f.ctex"]
 
 [params]
 

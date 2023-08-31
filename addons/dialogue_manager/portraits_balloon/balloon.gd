@@ -45,7 +45,7 @@ var dialogue_line: DialogueLine:
 		
 		character_label.visible = not dialogue_line.character.is_empty()
 		character_label.text = tr(dialogue_line.character, "dialogue")
-		character_portrait.texture = load("res://examples/portraits_balloon/portraits/%s%s.png" % [dialogue_line.character.to_lower(), file_suffix])
+		character_portrait.texture = load("res://addons/dialogue_manager/portraits_balloon/portraits/%s%s.png" % [dialogue_line.character.to_lower(), file_suffix])
 		
 		dialogue_label.modulate.a = 0
 		dialogue_label.custom_minimum_size.x = dialogue_label.get_parent().size.x - 1
@@ -204,7 +204,8 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 		next(dialogue_line.next_id)
 	elif event.is_action_pressed("ui_accept") and get_viewport().gui_get_focus_owner() == balloon:
 		next(dialogue_line.next_id)
-
+	elif Input.is_action_just_pressed("interact"):
+		next(dialogue_line.next_id)
 
 func _on_margin_resized() -> void:
 	handle_resize()
